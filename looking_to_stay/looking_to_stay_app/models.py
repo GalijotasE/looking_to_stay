@@ -35,6 +35,7 @@ class Company(models.Model):
     id = models.AutoField('Unique ID', primary_key=True)
     company_name = models.CharField('Company Name', max_length=128, help_text='Please type a name of the company')
     email = models.CharField('Email', max_length=128)
+    phone_number = models.CharField('Phone Number', max_length=13)
     postal_code = models.CharField('Postal Code', max_length=10)
     address = models.CharField('Address', max_length=255)
 
@@ -69,11 +70,11 @@ class Hotel(models.Model):
         Company, on_delete=models.SET_NULL,
         null=True, blank=True,
     )
-    city_id = models.ForeignKey(
+    city = models.ForeignKey(
         City, on_delete=models.SET_NULL,
         null=True, blank=True,
     )
-    category_id = models.ForeignKey(
+    category = models.ForeignKey(
         Category, on_delete=models.SET_NULL,
         null=True, blank=True,
     )
