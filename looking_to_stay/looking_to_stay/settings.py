@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'looking_to_stay_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
