@@ -9,9 +9,16 @@
 </head>
 <body>
     <header>
-        <a href="{% url 'index' %}">Stays</a>
-        <a>Hotels</a>
-        <a>Locations</a>
+        <div class="banner-img">
+            <div class="container">
+                {% block nav %}
+                    <a href="{% url 'index' %}">Stays</a>
+                    <a>Hotels</a>
+                    <a>Locations</a>
+                    <span class="spacer"></span>
+                {% endblock nav %}
+            </div>
+        </div>
     </header>
     <main>
         <div class="container">
@@ -22,5 +29,5 @@
     <footer>
         <div class="container">
             {% block footer%}<p>(C) 2022 Looking2Stay </p>{% endblock footer %}
-
+        </div>
 </body
