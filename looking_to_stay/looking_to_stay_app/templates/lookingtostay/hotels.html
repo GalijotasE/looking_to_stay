@@ -1,5 +1,17 @@
 {% extends 'lookingtostay/base.html' %}
 {% block title %} List Of Hotels - {{ block.super }}{% endblock title %}
 {% block content%}
+    <h2> Properties to stay in </h2>
+    <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')">Show all</button>
+        <button class="btn" onclick="filterSelection('hotels')">Hotels</button>
+        <button class="btn" onclick="filterSelection('apartments')">Apartments</button>
+        <button class="btn" onclick="filterSelection('villas')">Villas</button>
+        <button class="btn" onclick="filterSelection('cabins')">Cabins</button>
+        <button class="btn" onclick="filterSelection('homes')">Homes</button>
+    </div>
+
+
+
 
 {% endblock content%}

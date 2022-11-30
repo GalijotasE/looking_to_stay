@@ -17,7 +17,7 @@ header, main, footer {
 }
 
 header {
-    background-color: #1173b9b6;
+    /* background-color: #1173b97c; */
     height: auto;
 }
 
@@ -34,17 +34,21 @@ header .container {
 
 header a {
     display: inline-block;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 1.5rem;
     text-decoration: none;
 }
 
 header a:hover {
-    background-color: rgba(0, 0, 255, 0.429);
+    background-color: rgba(234, 234, 236, 0.429);
 }
 
 footer {
     background-color:  #abd;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
 }
 
 footer .container {
