@@ -14,3 +14,9 @@ def index(request):
     }
 
     return render(request, 'lookingtostay/index.html', context=context)
+
+def hotels(request):
+    return render(request, 'lookingtostay/hotels.html',)
+
+def locations(request):
+    return render(request, 'lookingtostay/locations.html',)

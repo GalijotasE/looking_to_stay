@@ -13,8 +13,8 @@
             <div class="container">
                 {% block nav %}
                     <a href="{% url 'index' %}">Stays</a>
-                    <a>Hotels</a>
-                    <a>Locations</a>
+                    <a href="{% url 'hotels' %}">Hotels</a>
+                    <a href="{% url 'locations' %}">Locations</a>
                     <span class="spacer"></span>
                 {% endblock nav %}
             </div>
