@@ -31,21 +31,21 @@ class City(models.Model):
         verbose_name_plural = 'Cities'
 
 
-class Company(models.Model):
-    id = models.AutoField('Unique ID', primary_key=True)
-    company_name = models.CharField('Company Name', max_length=128, help_text='Please type a name of the company')
-    email = models.CharField('Email', max_length=128)
-    phone_number = models.CharField('Phone Number', max_length=13)
-    postal_code = models.CharField('Postal Code', max_length=10)
-    address = models.CharField('Address', max_length=255)
+# class Company(models.Model):
+#     id = models.AutoField('Unique ID', primary_key=True)
+#     company_name = models.CharField('Company Name', max_length=128, help_text='Please type a name of the company')
+#     email = models.CharField('Email', max_length=128)
+#     phone_number = models.CharField('Phone Number', max_length=13)
+#     postal_code = models.CharField('Postal Code', max_length=10)
+#     address = models.CharField('Address', max_length=255)
 
-    def __str__(self) -> str:
-        return {self.company_name}
+#     def __str__(self) -> str:
+#         return {self.company_name}
 
-    class Meta():
-        ordering = ['company_name']
-        verbose_name = 'Company'
-        verbose_name_plural = 'Companies'
+#     class Meta():
+#         ordering = ['company_name']
+#         verbose_name = 'Company'
+#         verbose_name_plural = 'Companies'
 
 
 class Category(models.Model):
@@ -66,10 +66,10 @@ class Hotel(models.Model):
     hotel_name = models.CharField('Hotel Name', max_length=100, help_text="Please enter a name of the Hotel")
     description = models.TextField('Description', max_length=10000,
         help_text='Please enter a description of the hotel, consisting up to 10000 words.')
-    company_id = models.ForeignKey(
-        Company, on_delete=models.SET_NULL,
-        null=True, blank=True,
-    )
+    # company_id = models.ForeignKey(
+    #     Company, on_delete=models.SET_NULL,
+    #     null=True, blank=True,
+    # )
     city = models.ForeignKey(
         City, on_delete=models.SET_NULL,
         null=True, blank=True,
@@ -84,7 +84,7 @@ class Hotel(models.Model):
         return self.hotel_name
 
     class Meta:
-        ordering = ['hotel_name', 'company_id']
+        ordering = ['hotel_name',]
         verbose_name = 'Hotel'
         verbose_name_plural = 'Hotels'
 

@@ -1,0 +1,11 @@
+{% extends 'lookingtostay/base.html' %}
+{% block title %} Welcome to {{ block.super }}{% endblock title %}
+{% block content%}
+<h1>Book your dream stay today!</h1>
+<ul>
+    <ul>We have {{ num_hotels }} hotels registered with us,</ul>
+    <ul>in {{ num_categories }} different categories,</ul>
+    <ul>from over {{ num_countries }} countries!</ul>
+    <ul>Book your stay now!</ul>
+</ul>
+{% endblock content%}

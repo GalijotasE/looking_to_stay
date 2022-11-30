@@ -1,0 +1,26 @@
+{% load static %}
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Looking2Stay {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'lookingtostay/css/base.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'index' %}">Stays</a>
+        <a>Hotels</a>
+        <a>Locations</a>
+    </header>
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            {% block footer%}<p>(C) 2022 Looking2Stay </p>{% endblock footer %}
+
+</body
