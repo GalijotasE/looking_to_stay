@@ -19,11 +19,10 @@ def index(request):
 
 
 def hotels(request):
-    hotels = Hotel.objects.all()
-    context = {
-        'hotels': hotels
-    }
-    return render(request, 'lookingtostay/hotels.html', context=context)
+    paginator = Paginator(Hotel.objects.all(), 5)
+    page_number = request.GET.get('page')
+    paged_hotels = paginator.get_page(page_number)
+    return render(request, 'lookingtostay/hotels.html', {'hotels': paged_hotels})
 
 
 def locations(request):

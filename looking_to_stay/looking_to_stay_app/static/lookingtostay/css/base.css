@@ -87,9 +87,36 @@ ul.hotel_list li.hotel h4 {
     margin-top: 0;
 }
 
+
 ul.hotel_list li.hotel p {
     margin: 0;
     color: rgb(106, 106, 106);
+}
+
+/* bendra paginator lauku lentele */
+.paginator a, .paginator span {
+    display: inline-block;
+    padding: 0.3rem;
+    margin: 1px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+
+}
+
+/* Centruoja betkoki html objekta */
+.center { 
+    text-align: center;
+}
+
+/* Paginator pasirinktas puslapis */
+.paginator span {
+    background-color: rgb(138, 167, 255);
+}
+
+/* Paginator visi kiti puslapiu laukai */
+.paginator a {
+    background-color: rgb(255, 255, 255);
 }
 
 /* footer {

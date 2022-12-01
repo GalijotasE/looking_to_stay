@@ -26,6 +26,17 @@
         </li>
     {% endfor %}
 </ul>
+<div class="paginator center">
+    {% if hotels.has_other_pages %}
+        {% for page_number in hotels.paginator.page_range %}
+            {% if page_number == hotels.number %}
+                <span>{{ page_number }}</span>
+            {% else %}
+                <a href="?page={{ page_number }}">{{ page_number }}</a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
 
 
 {% endblock content%}
