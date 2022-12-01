@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(74, 201, 171, 0.433);
+    background-color: rgba(253, 194, 194, 0.815);
     font-family: 'Verdana';
     margin: 0;
     display: flex;
@@ -43,8 +43,29 @@ header a:hover {
     background-color: rgba(234, 234, 236, 0.429);
 }
 
+.btn {
+    border: none;
+    outline: none;
+    /* background-color: white; */
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color:rgb(218, 218, 218)
+}
+
+.btn.active {
+    background-color: #666;
+    color: white;
+}
+
+.button.aktyvus {
+    background-color: #666;
+    color: white;
+}
+
 footer {
-    background-color:  #abd;
+    background-color:  rgb(138, 138, 138);
     position: absolute;
     bottom: 0;
     width: 100%;

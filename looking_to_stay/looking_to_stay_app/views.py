@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Hotel, Country, Category
+from django.views.generic import ListView
+from django.core.paginator import Paginator
+
 
 def index(request):
     num_hotels = Hotel.objects.all().count()
@@ -15,8 +17,15 @@ def index(request):
 
     return render(request, 'lookingtostay/index.html', context=context)
 
+
 def hotels(request):
-    return render(request, 'lookingtostay/hotels.html',)
+    hotels = Hotel.objects.all()
+    context = {
+        'hotels': hotels
+    }
+    return render(request, 'lookingtostay/hotels.html', context=context)
+
 
 def locations(request):
-    return render(request, 'lookingtostay/locations.html',)
+    return render(request, 'lookingtostay/locations.html', )
+

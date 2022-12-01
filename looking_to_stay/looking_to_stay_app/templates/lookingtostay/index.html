@@ -2,10 +2,10 @@
 {% block title %} Welcome to {{ block.super }}{% endblock title %}
 {% block content%}
 <h1>Book your dream stay today!</h1>
-<ul>
-    <ul>We have {{ num_hotels }} hotels registered with us,</ul>
-    <ul>in {{ num_categories }} different categories,</ul>
-    <ul>from over {{ num_countries }} countries!</ul>
-    <ul>Book your stay now!</ul>
-</ul>
+    <p>
+    We have {{ num_hotels }} hotels registered with us,<br>
+    in {{ num_categories }} different categories,<br>
+    from over {{ num_countries }} countries!<br>
+    Book your stay now!<br>
+    </p>
 {% endblock content%}
