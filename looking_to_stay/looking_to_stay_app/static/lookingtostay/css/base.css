@@ -88,9 +88,9 @@ ul.hotel_list li.hotel h4 {
 }
 
 ul.hotel_list li.hotel p {
+    margin: 0;
     color: rgb(106, 106, 106);
 }
-
 
 /* footer {
     background-color:  rgb(138, 138, 138);

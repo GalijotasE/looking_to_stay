@@ -3,6 +3,14 @@
 {% block title %} List Of Hotels - {{ block.super }}{% endblock title %}
 {% block content%}
 <h1> Properties to stay in </h1>
+<div class="category_filter">
+    <h3>Categories Of Properties</h3>
+    <ul>
+        {% for filter_categories in categories %}
+            <li class="{% if filter_categories == categories %}current{% endif %}">{{ filter_categories }}</li>
+        {% endfor %}
+    </ul>
+</div>
 <ul class="hotel_list">
     {% for hotel in hotels %}
         <li class="hotel">
@@ -12,7 +20,7 @@
                 {% else %}
                     <img src="{% static 'lookingtostay/img/hotel.jpg' %}">
                 {% endif %}
-                <h4>{{ hotel.hotel_name}}</h4>
+                <p><b>{{ hotel.hotel_name}}</b></p>
             </a>
             <p>Located in {{ hotel.city }}</p>
         </li>
