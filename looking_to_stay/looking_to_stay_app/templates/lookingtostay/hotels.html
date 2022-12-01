@@ -1,40 +1,18 @@
 {% extends 'lookingtostay/base.html' %}
+{% load static %}
 {% block title %} List Of Hotels - {{ block.super }}{% endblock title %}
 {% block content%}
 <h1> Properties to stay in </h1>
-{% comment %} <h1> Properties to stay in </h1>
-<div id="myBtnContainer">
-    <button class="btn active" onclick="filterSelection('all')">Show all</button>
-    <button class="btn" onclick="filterSelection('hotels')">Hotels</button>
-    <button class="btn" onclick="filterSelection('apartments')">Apartments</button>
-    <button class="btn" onclick="filterSelection('villas')">Villas</button>
-    <button class="btn" onclick="filterSelection('cabins')">Cabins</button>
-    <button class="btn" onclick="filterSelection('homes')">Homes</button>
-</div>
-
-<script>
-    var btnContainer = document.getElementById("myBtnContainer");
-    var btns = btnContainer.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-    });
-    }
-</script>
-<div> {% endcomment %}
-
-<ul class="hotels">
+<ul class="hotel_list">
     {% for hotel in hotels %}
-        {% comment %} <li class="hotel">
-            <a href="{% url 'hotel' hotel.pk %}">
-                {% if hotel.pic %}
-                    <img src="{{ book.pic.url }}">
+        <li class="hotel">
+            {% comment %} <a href="{% url 'hotels' hotel.pk %}"> {% endcomment %}
+                {% if hotel.cover_photo %}
+                    <img src="{{ hotel.cover_photo.url }}">
                 {% else %}
-                    <img src="{% static 'lookingtostay/img/hotel.png' %}">
-                {% endif %} {% endcomment %}
-                <h3>{{ hotel.hotel_name}}</h3>
+                    <img src="{% static 'lookingtostay/img/hotel.jpg' %}">
+                {% endif %}
+                <h4>{{ hotel.hotel_name}}</h4>
             </a>
             <p>Located in {{ hotel.city }}</p>
         </li>

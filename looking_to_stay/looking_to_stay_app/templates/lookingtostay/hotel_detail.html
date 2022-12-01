@@ -1,0 +1,12 @@
+{% extends 'lookingtostay/base.html' %}
+{% load static %}
+{% block title %}{{ object }}{% endblock title %}
+{% block content%}
+<h1>{{ object.title }}</h1>
+<h3>Located in {{ object.location }}</h3>
+<p>Description<br>
+    {{ hotel.description }}
+</p>
+
+
+{% endblock content%}

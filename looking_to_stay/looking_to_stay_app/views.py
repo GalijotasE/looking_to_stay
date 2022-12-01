@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Hotel, Country, Category
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
 
 
@@ -29,3 +29,6 @@ def hotels(request):
 def locations(request):
     return render(request, 'lookingtostay/locations.html', )
 
+class HotelDetailView(DetailView):
+    model = Hotel
+    template_name = 'hotel_detail.html'

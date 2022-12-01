@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(253, 194, 194, 0.815);
+    background-color: rgba(255, 255, 255, 0.815);
     font-family: 'Verdana';
     margin: 0;
     display: flex;
@@ -64,9 +64,37 @@ header a:hover {
     color: white;
 }
 
-footer {
+ul.hotel_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+ul.hotel_list li.hotel {
+    flex-basis: 15rem;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0;
+    list-style: none;
+}
+
+ul.hotel_list li.hotel img {
+    max-width: 100%;
+}
+
+ul.hotel_list li.hotel h4 {
+    margin-top: 0;
+}
+
+ul.hotel_list li.hotel p {
+    color: rgb(106, 106, 106);
+}
+
+
+/* footer {
     background-color:  rgb(138, 138, 138);
-    position: absolute;
+    position: static;
     bottom: 0;
     width: 100%;
 
@@ -75,4 +103,4 @@ footer {
 footer .container {
     display: flex;
     align-content: stretch;
-}
+} */
