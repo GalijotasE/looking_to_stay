@@ -26,7 +26,7 @@ class CityAdmin(admin.ModelAdmin):
 
 
 class HotelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'hotel_name', 'city', 'category')
+    list_display = ('id', 'hotel_name', 'city', 'category',)
     readonly_fields = ('id', )
     search_fields = ('hotel_name', 'city')
     list_display_links = ('hotel_name', )
@@ -46,7 +46,7 @@ class CurrencyAdmin(admin.ModelAdmin):
 
 
 class RoomTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'price', 'people')
+    list_display = ('id', 'name','price','currency_type', 'people')
     readonly_fields = ('id',)
     list_display_links = ('price',)
 

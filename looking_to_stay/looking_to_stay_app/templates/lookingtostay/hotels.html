@@ -10,7 +10,7 @@
             <li class="{% if filter_category == category %}current{% endif %}">{{ filter_category.link_filtered_hotels }}</li>
         {% endfor %}
     </ul>
-    <form action="{% url 'hotels' %}" method="get">
+    <form class='searchmethod' action="{% url 'hotels' %}" method="get">
         <input type="text" name="search", value="{{ request.GET.search }}">
         <button type="submit">Search</button>
     </form>
@@ -24,9 +24,10 @@
                 {% else %}
                     <img src="{% static 'lookingtostay/img/hotel.jpg' %}">
                 {% endif %}
-                <p><b>{{ hotel.hotel_name}}</b></p>
+                <p><b>{{ hotel.hotel_name}}</b><p>
             </a>
             <p>&#128204; {{ hotel.city }}</p>
+            <h5><i>From </i>{{ hotel.price_from }} {{ hotel.type_currency }}<i> per night </i></h5>
         </li>
     {% endfor %}
 </ul>

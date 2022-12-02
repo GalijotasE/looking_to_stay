@@ -22,7 +22,7 @@ def index(request):
 
 
 def hotels(request):
-    paginator = Paginator(Hotel.objects.all(), 5)
+    paginator = Paginator(Hotel.objects.all(), 10)
     page_number = request.GET.get('page')
     paged_hotels = paginator.get_page(page_number)
     return render(request, 'lookingtostay/hotels.html', {'hotels': paged_hotels})

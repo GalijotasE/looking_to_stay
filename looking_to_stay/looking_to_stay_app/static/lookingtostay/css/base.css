@@ -87,11 +87,17 @@ ul.hotel_list li.hotel h4 {
     margin-top: 0;
 }
 
-
 ul.hotel_list li.hotel p {
     margin: 0;
+    padding-bottom: 1;
     color: rgb(106, 106, 106);
+    font-size: 13;
 }
+
+ul.hotel_list li.hotel h4 {
+    margin-bottom: 0;
+}
+
 
 /* bendra paginator lauku lentele */
 .paginator a, .paginator span {

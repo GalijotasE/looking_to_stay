@@ -68,6 +68,19 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
+class Currency(models.Model):
+    id = models.AutoField('Unique Id', primary_key=True)
+    currency = models.CharField('Currency', max_length=3, help_text='Currency name consisting of 3 letters, eg:EUR/USD/GBP')
+
+    def __str__(self) -> str:
+        return self.currency
+
+    class Meta:
+        ordering = ['currency',]
+        verbose_name = 'Currency'
+        verbose_name_plural = 'Currencies'
+
+
 class Hotel(models.Model):
     id = models.AutoField('Unique ID', primary_key=True)
     hotel_name = models.CharField('Hotel Name', max_length=100, help_text="Please enter a name of the Hotel")
@@ -85,6 +98,8 @@ class Hotel(models.Model):
         Category, on_delete=models.SET_NULL,
         null=True, blank=True,
     )
+    price_from = models.IntegerField('Price per night from')
+    type_currency = models.ForeignKey(Currency, on_delete=models.SET_NULL, null=True, blank=True)
     cover_photo = models.ImageField('Cover Photo', upload_to='covers', blank=True, null=True)
 
     def __str__(self) -> str:
@@ -95,18 +110,6 @@ class Hotel(models.Model):
         verbose_name = 'Hotel'
         verbose_name_plural = 'Hotels'
 
-
-class Currency(models.Model):
-    id = models.AutoField('Unique Id', primary_key=True)
-    currency = models.CharField('Currency', max_length=3, help_text='Currency name consisting of 3 letters, eg:EUR/USD/GBP')
-
-    def __str__(self) -> str:
-        return self.currency
-
-    class Meta:
-        ordering = ['currency',]
-        verbose_name = 'Currency'
-        verbose_name_plural = 'Currencies'
 
 
 class RoomType(models.Model):
