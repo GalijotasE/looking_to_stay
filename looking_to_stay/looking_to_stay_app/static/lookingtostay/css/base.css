@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(255, 255, 255, 0.815);
+    background-color: rgba(251, 231, 202, 0.815);
     font-family: 'Verdana';
     margin: 0;
     display: flex;
@@ -8,12 +8,21 @@ body {
     min-height: 100vh;
 }
 
+h1.hotelheader {
+    margin-left: 2.4rem;
+}
+
 header, main, footer {
     min-width: fit-content;
 }
 
 .banner-img {
-    background-image: url('img/bg.jpg');
+    /* background-image: url('img/bg.jpg'); */
+    background-color: rgb(217, 183, 124);
+}
+
+.logo {
+    height: 70px;
 }
 
 header {
@@ -40,28 +49,7 @@ header a {
 }
 
 header a:hover {
-    background-color: rgba(234, 234, 236, 0.429);
-}
-
-.btn {
-    border: none;
-    outline: none;
-    /* background-color: white; */
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color:rgb(218, 218, 218)
-}
-
-.btn.active {
-    background-color: #666;
-    color: white;
-}
-
-.button.aktyvus {
-    background-color: #666;
-    color: white;
+    background-color: rgba(203, 161, 89, 0.5);
 }
 
 ul.hotel_list {
@@ -71,31 +59,61 @@ ul.hotel_list {
     gap: 1rem;
 }
 
+/* property list individualios lenteles */
 ul.hotel_list li.hotel {
     flex-basis: 15rem;
     border: none;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(195, 158, 94);
     padding: 0;
     list-style: none;
 }
 
-ul.hotel_list li.hotel img {
-    max-width: 100%;
+/* property list individualios lenteles hover */
+ul.hotel_list li.hotel:hover {
+    background-color: rgb(197, 149, 67);
 }
 
-ul.hotel_list li.hotel h4 {
-    margin-top: 0;
+ul.hotel_list li.hotel img {
+    max-width: 100%;
+    cursor: pointer;
 }
 
 ul.hotel_list li.hotel p {
     margin: 0;
     padding-bottom: 1;
-    color: rgb(106, 106, 106);
+    color: rgb(255, 255, 255);
     font-size: 13;
 }
 
-ul.hotel_list li.hotel h4 {
-    margin-bottom: 0;
+ul.hotel_list li.hotel h5 {
+    color: white;
+}
+
+/* dekoracija ant property pavadinimo property liste */
+ul.hotel_list li.hotel a {
+    text-decoration: none;
+}
+
+/* dekoracija ant property categories pavadinimu */
+a.category {
+    text-decoration: none;
+    border: none;
+    padding: 12px 16px;
+    background-color: rgb(208, 175, 117);
+    color: white;
+}
+
+/* properties categories mygtuku hover */
+a.category:hover {
+    background-color:rgb(203, 161, 89);
+}
+
+/* sarasas be tasku ant property categories pavadinimu */
+ul.cat {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 
@@ -115,6 +133,17 @@ ul.hotel_list li.hotel h4 {
     text-align: center;
 }
 
+.lower {
+    padding-top: 1rem;
+}
+
+/* property pavadinimas */
+.center.lower p {
+    font-size: 13px;
+}
+
+
+
 /* Paginator pasirinktas puslapis */
 .paginator span {
     background-color: rgb(138, 167, 255);
@@ -124,16 +153,3 @@ ul.hotel_list li.hotel h4 {
 .paginator a {
     background-color: rgb(255, 255, 255);
 }
-
-/* footer {
-    background-color:  rgb(138, 138, 138);
-    position: static;
-    bottom: 0;
-    width: 100%;
-
-}
-
-footer .container {
-    display: flex;
-    align-content: stretch;
-} */

@@ -3,7 +3,10 @@
 {% block title %}{{ object }}{% endblock title %}
 {% block content%}
 <h1>{{ object.hotel_name }}</h1>
-<h3>&#128204; {{ object.city }}</h3>
+<div>
+    <h3>&#128204; {{ object.city }}</h3>
+    <h5><i>From </i>{{ hotel.price_from }} {{ hotel.type_currency }}<i> per night </i></h5>
+</div>
 <p>Description<br>
     {{ hotel.description }}
 </p>

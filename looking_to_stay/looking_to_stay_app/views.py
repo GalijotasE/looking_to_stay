@@ -21,11 +21,11 @@ def index(request):
     return render(request, 'lookingtostay/index.html', context=context)
 
 
-def hotels(request):
-    paginator = Paginator(Hotel.objects.all(), 10)
-    page_number = request.GET.get('page')
-    paged_hotels = paginator.get_page(page_number)
-    return render(request, 'lookingtostay/hotels.html', {'hotels': paged_hotels})
+# def hotels(request):
+#     paginator = Paginator(Hotel.objects.all(), 10)
+#     page_number = request.GET.get('page')
+#     paged_hotels = paginator.get_page(page_number)
+#     return render(request, 'lookingtostay/hotels.html', {'hotels': paged_hotels})
 
 
 def locations(request):
@@ -39,19 +39,20 @@ class HotelDetailView(DetailView):
         single_hotel = get_object_or_404(Hotel, pk=hotel_id)
         return render(request, 'lookingtostay/hotel_detail.html', {'hotel': single_hotel})
 
-    def get_success_url(self):
-        return reverse('hotel', kwargs={'pk': self.get_object().id})
+    # def get_success_url(self):
+    #     return reverse('hotel', kwargs={'pk': self.get_object().id})
 
 
 class HotelListView(ListView):
     model = Hotel
+    paginate_by = 10
     template_name = 'lookingtostay/hotels.html'
 
     def get_queryset(self):
         queryset = super().get_queryset()
         search = self.request.GET.get('search')
         if search:
-            queryset.filter(Q(title__icontains=search) | Q(description__icontains=search))
+            queryset.filter(Q(hotel_name__icontains=search) | Q(description__icontains=search))
         category_id = self.request.GET.get('category_id')
         if category_id:
             queryset = queryset.filter(category__id=category_id)

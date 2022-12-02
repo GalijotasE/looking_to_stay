@@ -100,7 +100,7 @@ class Hotel(models.Model):
     )
     price_from = models.IntegerField('Price per night from')
     type_currency = models.ForeignKey(Currency, on_delete=models.SET_NULL, null=True, blank=True)
-    cover_photo = models.ImageField('Cover Photo', upload_to='covers', blank=True, null=True)
+    cover_photo = models.ImageField('Cover Photo', upload_to='covers', blank=True, null=True, )
 
     def __str__(self) -> str:
         return self.hotel_name
@@ -163,6 +163,13 @@ class Room(models.Model):
 
     class Meta:
         ordering = ['room_name',]
+
+class Image(models.Model):
+    hotel = models.ForeignKey(Hotel, on_delete=models.SET_NULL, null=True, blank=True)
+    image = models.FileField(upload_to='images/')
+
+    def __str__(self) -> str:
+        return self.hotel.hotel_name
 
 
 
