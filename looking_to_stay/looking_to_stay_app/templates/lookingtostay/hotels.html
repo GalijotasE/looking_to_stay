@@ -18,7 +18,7 @@
 <ul class="hotel_list">
     {% for hotel in hotels %}
         <li class="hotel">
-            {% comment %} <a href="{% url 'hotels' hotels.pk %}"> {% endcomment %}
+            {% comment %} <a href="{% url 'hotel' hotel.pk %}"> {% endcomment %}
                 {% if hotel.cover_photo %}
                     <img src="{{ hotel.cover_photo.url }}">
                 {% else %}
@@ -26,7 +26,7 @@
                 {% endif %}
                 <p><b>{{ hotel.hotel_name}}</b></p>
             </a>
-            <p>Located in {{ hotel.city }}</p>
+            <p>&#128204; {{ hotel.city }}</p>
         </li>
     {% endfor %}
 </ul>

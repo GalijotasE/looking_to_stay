@@ -35,6 +35,10 @@ class HotelDetailView(DetailView):
     model = Hotel
     template_name = 'lookingtostay/hotel_detail.html'
 
+    def hotel(request, hotel_id):
+        single_hotel = get_object_or_404(Hotel, pk=hotel_id)
+        return render(request, 'lookingtostay/hotel_detail.html', {'hotel': single_hotel})
+
     def get_success_url(self):
         return reverse('hotel', kwargs={'pk': self.get_object().id})
 

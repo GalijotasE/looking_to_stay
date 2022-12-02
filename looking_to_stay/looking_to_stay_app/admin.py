@@ -39,9 +39,31 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display_links = ('category_name',)
 
 
+class RoomTypeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'price', 'people')
+    readonly_fields = ('id',)
+    list_display_links = ('price',)
+
+
+class AmenitiesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'amenity')
+    readonly_fields = ('id', )
+    list_display = ('amenity',)
+    search_fields = ('amenity',)
+
+
+class RoomAdmin(admin.ModelAdmin):
+    list_display = ('id', 'room_name', 'room_type_id', 'room_type_price' )
+    readonly_fields = ('id',)
+    list_display = ('room_name',)
+    search_fields = ('room_name', 'room_type_id')
+
 
 admin.site.register(models.Country, CountryAdmin)
 admin.site.register(models.City, CityAdmin)
 # admin.site.register(models.Company)
 admin.site.register(models.Hotel, HotelAdmin)
 admin.site.register(models.Category, CategoryAdmin)
+admin.site.register(models.RoomType, RoomTypeAdmin)
+admin.site.register(models.Room, RoomAdmin)
+admin.site.register(models.Amenities, AmenitiesAdmin)

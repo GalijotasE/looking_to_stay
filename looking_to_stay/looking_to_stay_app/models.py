@@ -96,12 +96,52 @@ class Hotel(models.Model):
         verbose_name_plural = 'Hotels'
 
 
-# class Room(models.Model):
-#     pass
+class RoomType(models.Model):
+    id = models.AutoField('Unique Id', primary_key=True)
+    name = models.CharField('Type Name', max_length=255, help_text='Name of the room type')
+    price = models.IntegerField('Price Per Night', help_text='Please enter the price for the night')
+    people = models.IntegerField('People', help_text='Amount of people fit in this room')
+    
+    def __str__(self) -> str:
+        return f'{self.name} - {self.price} a night'
+
+    class Meta:
+        ordering = ['price']
 
 
-# class RoomType(models.Model):
-#     pass
+class Amenities(models.Model):
+    id = models.AutoField('Unique Id', primary_key=True)
+    amenity = models.CharField('Amenity', max_length=255, help_text='Please enter amenities provided')
+
+    def __str__(self) -> str:
+        return self.amenity
+
+    class Meta:
+        ordering = ['amenity',]
+
+
+class Room(models.Model):
+    id = models.AutoField('Unique Id', primary_key=True)
+    room_name = models.CharField('Room name', max_length=255)
+    room_type_id = models.ForeignKey(
+        RoomType, on_delete=models.SET_NULL,
+        null=True, blank=True
+    )
+    amenities = models.ManyToManyField(
+        Amenities, help_text='Choose amenities of this room',
+        verbose_name='amenities'
+    )
+    hotel_id = models.ForeignKey(
+        Hotel, on_delete=models.SET_NULL,
+        null=True, blank=True
+    )
+
+    def __str__(self) -> str:
+        return self.room_name
+
+    class Meta:
+        ordering = ['room_name',]
+
 
 
 # class Reviews(models.Model):
