@@ -96,17 +96,34 @@ class Hotel(models.Model):
         verbose_name_plural = 'Hotels'
 
 
+class Currency(models.Model):
+    id = models.AutoField('Unique Id', primary_key=True)
+    currency = models.CharField('Currency', max_length=3, help_text='Currency name consisting of 3 letters, eg:EUR/USD/GBP')
+
+    def __str__(self) -> str:
+        return self.currency
+
+    class Meta:
+        ordering = ['currency',]
+        verbose_name = 'Currency'
+        verbose_name_plural = 'Currencies'
+
+
 class RoomType(models.Model):
     id = models.AutoField('Unique Id', primary_key=True)
     name = models.CharField('Type Name', max_length=255, help_text='Name of the room type')
     price = models.IntegerField('Price Per Night', help_text='Please enter the price for the night')
+    currency_type = models.ForeignKey(
+        Currency, on_delete=models.SET_NULL,
+        null=True, blank=True
+    )
     people = models.IntegerField('People', help_text='Amount of people fit in this room')
     
     def __str__(self) -> str:
         return f'{self.name} - {self.price} a night'
 
     class Meta:
-        ordering = ['price']
+        ordering = ['price',]
 
 
 class Amenities(models.Model):
@@ -118,6 +135,8 @@ class Amenities(models.Model):
 
     class Meta:
         ordering = ['amenity',]
+        verbose_name = 'Amenity'
+        verbose_name_plural = 'Amenities'
 
 
 class Room(models.Model):
