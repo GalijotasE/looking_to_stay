@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.html import format_html
+from django.urls import reverse
 
 
 class Country(models.Model):
@@ -26,7 +28,7 @@ class City(models.Model):
         return f'{self.city_name} - {self.country_id}'
 
     class Meta:
-        ordering = ['city_name', 'country_id']
+        ordering = ['city_name', 'country_id',]
         verbose_name = 'City'
         verbose_name_plural = 'Cities'
 
@@ -51,6 +53,11 @@ class City(models.Model):
 class Category(models.Model):
     id = models.AutoField('Unique ID', primary_key=True)
     category_name = models.CharField('Category', max_length=128, help_text='Please type a name of the category')
+
+    def link_filtered_hotels(self):
+        link = reverse('hotels')+'?category_id='+str(self.id)
+        return format_html('<a class="category" href="{link}">{name}</a>', link=link, name=self.category_name)
+    
 
     def __str__(self) -> str:
         return self.category_name

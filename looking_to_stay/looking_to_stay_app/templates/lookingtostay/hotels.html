@@ -2,19 +2,23 @@
 {% load static %}
 {% block title %} List Of Hotels - {{ block.super }}{% endblock title %}
 {% block content%}
-<h1> Properties to stay in </h1>
+<h1> Properties list </h1>
 <div class="category_filter">
-    <h3>Categories Of Properties</h3>
+    <h3>Categories</h3>
     <ul>
-        {% for filter_categories in categories %}
-            <li class="{% if filter_categories == categories %}current{% endif %}">{{ filter_categories }}</li>
+        {% for filter_category in categories %}
+            <li class="{% if filter_category == category %}current{% endif %}">{{ filter_category.link_filtered_hotels }}</li>
         {% endfor %}
     </ul>
+    <form action="{% url 'hotels' %}" method="get">
+        <input type="text" name="search", value="{{ request.GET.search }}">
+        <button type="submit">Search</button>
+    </form>
 </div>
 <ul class="hotel_list">
     {% for hotel in hotels %}
         <li class="hotel">
-            {% comment %} <a href="{% url 'hotels' hotel.pk %}"> {% endcomment %}
+            {% comment %} <a href="{% url 'hotels' hotels.pk %}"> {% endcomment %}
                 {% if hotel.cover_photo %}
                     <img src="{{ hotel.cover_photo.url }}">
                 {% else %}

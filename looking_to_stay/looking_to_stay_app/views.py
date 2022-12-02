@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import Hotel, Country, Category
 from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
+from django.urls import reverse
 
 
 def index(request):
@@ -30,4 +33,33 @@ def locations(request):
 
 class HotelDetailView(DetailView):
     model = Hotel
-    template_name = 'hotel_detail.html'
+    template_name = 'lookingtostay/hotel_detail.html'
+
+    def get_success_url(self):
+        return reverse('hotel', kwargs={'pk': self.get_object().id})
+
+
+class HotelListView(ListView):
+    model = Hotel
+    template_name = 'lookingtostay/hotels.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get('search')
+        if search:
+            queryset.filter(Q(title__icontains=search) | Q(description__icontains=search))
+        category_id = self.request.GET.get('category_id')
+        if category_id:
+            queryset = queryset.filter(category__id=category_id)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['hotels_count'] = self.get_queryset().count()
+        category_id = self.request.GET.get('category_id')
+        context['categories'] = Category.objects.all()
+        if category_id:
+            context['category'] = get_object_or_404(Category, id=category_id)
+        return context
+
+        
