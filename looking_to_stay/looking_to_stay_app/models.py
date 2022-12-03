@@ -94,6 +94,7 @@ class Hotel(models.Model):
         City, on_delete=models.SET_NULL,
         null=True, blank=True,
     )
+    address = models.CharField('Address', max_length=255, help_text='Address of the hotel')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL,
         null=True, blank=True,

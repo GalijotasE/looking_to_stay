@@ -34,16 +34,14 @@
     {% endfor %}
 </ul>
 <div class="paginator center">
-    {% if hotels.has_other_pages %}
-        {% for page_number in hotels.paginator.page_range %}
-            {% if page_number == hotels.number %}
-                <span>{{ page_number }}</span>
-            {% else %}
-                <a href="?page={{ page_number }}">{{ page_number }}</a>
-            {% endif %}
-        {% endfor %}
+    {% if page_obj.has_previous %}
+        <a href="?{% if request.GET.search %}search={{ request.GET.search }}&{% endif %}page=1">&#11120;</a>
+        <a href="?{% if request.GET.search %}search={{ request.GET.search }}&{% endif %}page={{ page_obj.previous_page_number }}">&#129120;</a>
+    {% endif %}
+    {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}
+        <a href="?{% if request.GET.search %}search={{ request.GET.search }}&{% endif %}page={{ page_obj.next_page_number }}">&#129122;</a>
+        <a href="?{% if request.GET.search %}search={{ request.GET.search }}&{% endif %}page={{ page_obj.paginator.num_pages }}">&#11122;</a>
     {% endif %}
 </div>
-
-
 {% endblock content%}

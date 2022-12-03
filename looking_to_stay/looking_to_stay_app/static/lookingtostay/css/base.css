@@ -8,6 +8,7 @@ body {
     min-height: 100vh;
 }
 
+/* atstumas nuo kaires */
 h1.hotelheader {
     margin-left: 2.4rem;
 }
@@ -50,6 +51,10 @@ header a {
 
 header a:hover {
     background-color: rgba(203, 161, 89, 0.5);
+}
+
+h1 {
+    color: rgb(70, 39, 0);
 }
 
 ul.hotel_list {
@@ -141,15 +146,20 @@ ul.cat {
 .center.lower p {
     font-size: 13px;
 }
-
-
-
-/* Paginator pasirinktas puslapis */
-.paginator span {
-    background-color: rgb(138, 167, 255);
+/* atstumas nuo virsaus ir apacios paginator */
+.paginator {
+    margin: 2rem;
+    color: rgb(98, 57, 0);
 }
 
-/* Paginator visi kiti puslapiu laukai */
+/* paginator mygtuku spalva */
 .paginator a {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(208, 175, 117);
+    color: white;
+    border: none;
+}
+
+/* paginator mygtuko spalva hover */
+.paginator a:hover {
+    background-color:rgb(203, 161, 89);
 }

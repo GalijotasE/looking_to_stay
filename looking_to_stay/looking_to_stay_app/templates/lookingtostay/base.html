@@ -14,9 +14,9 @@
         <div class="banner-img">
             <div class="container">
                 {% block nav %}
-                    <img class="logo" src="{% static 'lookingtostay/img/lookingtostaylogo.png' %}"">
-                    <a href="{% url 'index' %}">Stays</a>
-                    <a href="{% url 'hotels' %}">Hotels</a>
+                    <img class="logo" src="{% static 'lookingtostay/img/lookingtostaylogo.png' %}">
+                    {% comment %} <a href="{% url 'index' %}">Stays</a> {% endcomment %}
+                    <a href="{% url 'hotels' %}">Properties</a>
                     <a href="{% url 'locations' %}">Locations</a>
                     <span class="spacer"></span>
                 {% endblock nav %}
@@ -32,5 +32,6 @@
     {% comment %} <footer>
         <div class="container">
             {% block footer%}<p>(C) 2022 Looking2Stay </p>{% endblock footer %}
-        </div> {% endcomment %}
+        </div>
+    </footer> {% endcomment %}
 </body
