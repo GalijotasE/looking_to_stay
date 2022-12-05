@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Hotel, Country, Category
+from .models import Hotel, Country, Category, Amenities
 from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
@@ -38,6 +38,11 @@ class HotelDetailView(DetailView):
     def hotel(request, hotel_id):
         single_hotel = get_object_or_404(Hotel, pk=hotel_id)
         return render(request, 'lookingtostay/hotel_detail.html', {'hotel': single_hotel})
+
+    # def all_amenities(request):
+    #     single_amenity = Hotel.amenities.all()
+    #     return render(request, 'lookingtostay/hotel_detail.html', {'single_amenity': single_amenity})
+
 
     # def get_success_url(self):
     #     return reverse('hotel', kwargs={'pk': self.get_object().id})
