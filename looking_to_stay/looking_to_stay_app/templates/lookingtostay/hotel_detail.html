@@ -2,13 +2,71 @@
 {% load static %}
 {% block title %}{{ object }}{% endblock title %}
 {% block content%}
+
 <h1>{{ object.hotel_name }}</h1>
 <div>
     <h3>&#128204;{{ object.address }} {{ object.city }}</h3>
     <h5><i>From </i>{{ hotel.price_from }} {{ hotel.type_currency }}<i> per night </i></h5>
 </div>
+<style>
+    .one {
+        grid-template-columns: repeat(3,auto);
+    }
+    .gallery {
+        --s: 130px; /* control the size */
+        --g: 10px;  /* control the gap */
+        --f: 1.5;   /* control the scale factor */
+        
+        display: inline-grid;
+        gap: var(--g);
+        width: calc(3*var(--s) + 2*var(--g));
+        aspect-ratio: 1;
+        {% comment %} grid-template-columns: repeat(3,auto); {% endcomment %}
+      }
+
+      .gallery > img {
+        width: 0;
+        height: 0;
+        min-height: 100%;
+        min-width: 100%;
+        object-fit: cover;
+        cursor: pointer;
+        filter: grayscale(80%);
+        transition: .35s linear;
+      }
+      
+      .gallery img:hover{
+        filter: grayscale(0);
+        width:  calc(var(--s)*var(--f));
+        height: calc(var(--s)*var(--f));
+      }
+</style>
+<div class="grid one">
+    <div class="gallery">
+        <img src="{{ object.hotel_images.hotel_img1.url }}">
+    </div>
+    <div class="gallery">
+        <img src="{{ object.hotel_images.hotel_img2.url }}">
+    </div>
+    <div class="gallery">
+        <img src="{{ object.hotel_images.hotel_img3.url }}">
+    </div>
+    <div class="gallery">
+        <img src="{{ object.hotel_images.hotel_img4.url }}">
+    </div>
+    <div class="gallery">
+        <img src="{{ object.hotel_images.hotel_img5.url }}">
+    </div>
+    <div class="gallery">
+        <img src="{{ object.hotel_images.hotel_img6.url }}">
+    </div>
+  </div>
 <h4>Description</h4>
 <p>{{ hotel.description }}</p>
-
-
+<h4>Amenities</h4>
+<ul class="amenity_list">
+    {% for amenity in Amenities %}
+    <li class="amenity">
+    {% endfor %}
+</ul>
 {% endblock content%}

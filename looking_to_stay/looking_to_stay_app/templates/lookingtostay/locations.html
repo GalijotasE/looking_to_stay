@@ -2,5 +2,24 @@
 {% load static %}
 {% block title %} List Of Locations - {{ block.super }}{% endblock title %}
 {% block content%}
-
+<div class="grid one">
+    <div>
+        <img src="{{ object.hotel_images.hotel_img1.url }}">
+    </div>
+    <div>
+        <img src="{{ object.hotel_images.hotel_img2.url }}">
+    </div>
+    <div>
+        <img src="{{ object.hotel_images.hotel_img3.url }}">
+    </div>
+    <div>
+        <img src="{{ object.hotel_images.hotel_img4.url }}">
+    </div>
+    <div>
+        <img src="{{ object.hotel_images.hotel_img5.url }}">
+    </div>
+    <div>
+        <img src="{{ object.hotel_images.hotel_img6.url }}">
+    </div>
+  </div>
 {% endblock content%}

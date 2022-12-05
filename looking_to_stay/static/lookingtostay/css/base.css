@@ -1,0 +1,166 @@
+body {
+    background-color: rgba(251, 231, 202, 0.815);
+    font-family: 'Verdana';
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+/* atstumas nuo kaires */
+h1.hotelheader {
+    margin-left: 2.4rem;
+}
+
+header, main, footer {
+    min-width: fit-content;
+}
+
+.banner-img {
+    /* background-image: url('img/bg.jpg'); */
+    background-color: rgb(217, 183, 124);
+}
+
+.logo {
+    height: 70px;
+}
+
+header {
+    /* background-color: #1173b97c; */
+    height: auto;
+}
+
+header .container {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    max-width: 92%;
+    min-width: 480px;
+    margin: 0 auto;
+}
+
+header a {
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    padding: 1.5rem;
+    text-decoration: none;
+}
+
+header a:hover {
+    background-color: rgba(203, 161, 89, 0.5);
+}
+
+h1 {
+    color: rgb(70, 39, 0);
+}
+
+ul.hotel_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* property list individualios lenteles */
+ul.hotel_list li.hotel {
+    flex-basis: 15rem;
+    border: none;
+    background-color: rgb(195, 158, 94);
+    padding: 0;
+    list-style: none;
+}
+
+/* property list individualios lenteles hover */
+ul.hotel_list li.hotel:hover {
+    background-color: rgb(197, 149, 67);
+}
+
+ul.hotel_list li.hotel img {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+ul.hotel_list li.hotel p {
+    margin: 0;
+    padding-bottom: 1;
+    color: rgb(255, 255, 255);
+    font-size: 13;
+}
+
+ul.hotel_list li.hotel h5 {
+    color: white;
+}
+
+/* dekoracija ant property pavadinimo property liste */
+ul.hotel_list li.hotel a {
+    text-decoration: none;
+}
+
+/* dekoracija ant property categories pavadinimu */
+a.category {
+    text-decoration: none;
+    border: none;
+    padding: 12px 16px;
+    background-color: rgb(208, 175, 117);
+    color: white;
+}
+
+/* properties categories mygtuku hover */
+a.category:hover {
+    background-color:rgb(203, 161, 89);
+}
+
+/* sarasas be tasku ant property categories pavadinimu */
+ul.cat {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+
+/* bendra paginator lauku lentele */
+.paginator a, .paginator span {
+    display: inline-block;
+    padding: 0.3rem;
+    margin: 1px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+
+}
+
+/* Centruoja betkoki html objekta */
+.center { 
+    text-align: center;
+}
+
+.lower {
+    padding-top: 1rem;
+}
+
+/* property pavadinimas */
+.center.lower p {
+    font-size: 13px;
+}
+/* atstumas nuo virsaus ir apacios paginator */
+.paginator {
+    margin: 2rem;
+    color: rgb(98, 57, 0);
+}
+
+/* paginator mygtuku spalva */
+.paginator a {
+    background-color: rgb(208, 175, 117);
+    color: white;
+    border: none;
+}
+
+/* paginator mygtuko spalva hover */
+.paginator a:hover {
+    background-color:rgb(203, 161, 89);
+}
+

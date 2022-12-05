@@ -81,6 +81,33 @@ class Currency(models.Model):
         verbose_name_plural = 'Currencies'
 
 
+class HotelImage(models.Model):
+    name = models.CharField('name', max_length=255, help_text='Pick any name for this album')
+    hotel_img1 = models.ImageField(upload_to='images/', help_text='Choose the main photo')
+    hotel_img2 = models.ImageField(upload_to='images/')
+    hotel_img3 = models.ImageField(upload_to='images/')
+    hotel_img4 = models.ImageField(upload_to='images/')
+    hotel_img5 = models.ImageField(upload_to='images/')
+    hotel_img6 = models.ImageField(upload_to='images/')
+
+    def __str__(self) -> str:
+        return f'{self.name}'
+
+
+
+class Amenities(models.Model):
+    id = models.AutoField('Unique Id', primary_key=True)
+    amenity = models.CharField('Amenity', max_length=255, help_text='Please enter amenities provided')
+
+    def __str__(self) -> str:
+        return self.amenity
+
+    class Meta:
+        ordering = ['amenity',]
+        verbose_name = 'Amenity'
+        verbose_name_plural = 'Amenities'
+
+
 class Hotel(models.Model):
     id = models.AutoField('Unique ID', primary_key=True)
     hotel_name = models.CharField('Hotel Name', max_length=100, help_text="Please enter a name of the Hotel")
@@ -102,6 +129,11 @@ class Hotel(models.Model):
     price_from = models.IntegerField('Price per night from')
     type_currency = models.ForeignKey(Currency, on_delete=models.SET_NULL, null=True, blank=True)
     cover_photo = models.ImageField('Cover Photo', upload_to='covers', blank=True, null=True, )
+    hotel_images = models.OneToOneField(HotelImage, on_delete=models.SET_NULL, null=True, blank=True)
+    amenities = models.ManyToManyField(
+        Amenities, help_text='Choose amenities of this room',
+        verbose_name='amenities'
+    )
 
     def __str__(self) -> str:
         return self.hotel_name
@@ -130,29 +162,12 @@ class RoomType(models.Model):
         ordering = ['price',]
 
 
-class Amenities(models.Model):
-    id = models.AutoField('Unique Id', primary_key=True)
-    amenity = models.CharField('Amenity', max_length=255, help_text='Please enter amenities provided')
-
-    def __str__(self) -> str:
-        return self.amenity
-
-    class Meta:
-        ordering = ['amenity',]
-        verbose_name = 'Amenity'
-        verbose_name_plural = 'Amenities'
-
-
 class Room(models.Model):
     id = models.AutoField('Unique Id', primary_key=True)
     room_name = models.CharField('Room name', max_length=255)
     room_type_id = models.ForeignKey(
         RoomType, on_delete=models.SET_NULL,
         null=True, blank=True
-    )
-    amenities = models.ManyToManyField(
-        Amenities, help_text='Choose amenities of this room',
-        verbose_name='amenities'
     )
     hotel_id = models.ForeignKey(
         Hotel, on_delete=models.SET_NULL,
@@ -164,13 +179,6 @@ class Room(models.Model):
 
     class Meta:
         ordering = ['room_name',]
-
-class Image(models.Model):
-    hotel = models.ForeignKey(Hotel, on_delete=models.SET_NULL, null=True, blank=True)
-    image = models.FileField(upload_to='images/')
-
-    def __str__(self) -> str:
-        return self.hotel.hotel_name
 
 
 
