@@ -1,11 +1,15 @@
 body {
     background-color: rgba(251, 231, 202, 0.815);
+    /* background-image: url('img/background.jpg'); */
+    background-size: 100%;
+    background-attachment: fixed;
     font-family: 'Verdana';
     margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     min-height: 100vh;
+    width: 100vw;
 }
 
 /* atstumas nuo kaires */
@@ -13,13 +17,16 @@ h1.hotelheader {
     margin-left: 2.4rem;
 }
 
-header, main, footer {
+header, main {
     min-width: fit-content;
 }
 
 .banner-img {
     /* background-image: url('img/bg.jpg'); */
-    background-color: rgb(217, 183, 124);
+    /* background-color: rgba(217, 183, 124, 0.5); */
+    background-color: rgba(217, 183, 124, 0.2);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
 .logo {
@@ -44,7 +51,7 @@ header .container {
 
 header a {
     display: inline-block;
-    color: rgb(255, 255, 255);
+    color: rgb(70, 39, 0);
     padding: 1.5rem;
     text-decoration: none;
 }
@@ -68,7 +75,10 @@ ul.hotel_list {
 ul.hotel_list li.hotel {
     flex-basis: 15rem;
     border: none;
-    background-color: rgb(195, 158, 94);
+    background-color: rgba(217, 183, 124, 0.2);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 0;
     list-style: none;
 }
@@ -81,17 +91,18 @@ ul.hotel_list li.hotel:hover {
 ul.hotel_list li.hotel img {
     max-width: 100%;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 ul.hotel_list li.hotel p {
     margin: 0;
     padding-bottom: 1;
-    color: rgb(255, 255, 255);
+    color: rgb(70, 39, 0);
     font-size: 13;
 }
 
 ul.hotel_list li.hotel h5 {
-    color: white;
+    color: rgb(70, 39, 0);
 }
 
 /* dekoracija ant property pavadinimo property liste */
@@ -104,8 +115,11 @@ a.category {
     text-decoration: none;
     border: none;
     padding: 12px 16px;
-    background-color: rgb(208, 175, 117);
-    color: white;
+    background-color: rgba(217, 183, 124, 0.2);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+    color: rgb(70, 39, 0);
 }
 
 /* properties categories mygtuku hover */
@@ -133,6 +147,10 @@ ul.cat {
 
 }
 
+.spacer {
+    flex-grow: 1;
+}
+
 /* Centruoja betkoki html objekta */
 .center { 
     text-align: center;
@@ -149,13 +167,15 @@ ul.cat {
 /* atstumas nuo virsaus ir apacios paginator */
 .paginator {
     margin: 2rem;
-    color: rgb(98, 57, 0);
+    /* color: rgb(70, 39, 0); */
 }
 
 /* paginator mygtuku spalva */
 .paginator a {
-    background-color: rgb(208, 175, 117);
-    color: white;
+    background-color: rgba(217, 183, 124, 0.2);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    color: rgb(70, 39, 0);
     border: none;
 }
 

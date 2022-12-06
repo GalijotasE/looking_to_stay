@@ -8,7 +8,7 @@
     <title>{% block title %} Looking2Stay {% endblock title %}</title>
     <link rel="icon" type="image/x-icon" href="{% static 'lookingtostay/img/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'lookingtostay/css/base.css' %}">
-    {% comment %} <link rel="stylesheet" href="{% static 'lookingtostay/css/hotel_detail.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'lookingtostay/css/hotel_detail.css' %}">
 </head>
 <body>
     <header>
@@ -20,6 +20,17 @@
                     <a href="{% url 'hotels' %}">Properties</a>
                     <a href="{% url 'locations' %}">Locations</a>
                     <span class="spacer"></span>
+                    {% if user.is_authenticated %}
+                        {% comment %} <a href="{% url 'profile' %}>{{ user }}"</a> {% endcomment %}
+                        {% if user.is_superuser or user.is_staff %}
+                            <a href="{% url 'admin:index' %}">Admin</a>
+                        {% endif %}
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a href="{% url 'register' %}">Register</a>
+                        <a href="{% url 'login' %}{% if not '/accounts/' in request.path %}?next={{ request.path }}{% endif %}">Login</a>
+                    {% endif %}
+
                 {% endblock nav %}
             </div>
         </div>
@@ -30,9 +41,5 @@
             {% endblock content %}
         </div>
     </main>
-    {% comment %} <footer>
-        <div class="container">
-            {% block footer%}<p>(C) 2022 Looking2Stay </p>{% endblock footer %}
-        </div>
-    </footer> {% endcomment %}
+
 </body
