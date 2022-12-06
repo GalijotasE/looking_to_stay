@@ -1,0 +1,27 @@
+{% extends 'registration/loginbase.html'%}
+{% load static %}
+{% block title %} Register - {{ block.super }}{% endblock title %}
+{% block content %}
+
+<form class="register" action="" method="post">
+    {% csrf_token %}
+    <h3><b>Registration</b></h3>
+    <label for="username">Username</label>
+    <input type="text" name="username" value="{{ request.POST.username }}">
+    
+    <label for="email">E-mail</label>
+    <input type="text" name="email" value="{{ request.POST.email }}">
+
+    <label for="password">Password</label>
+    <input type="password" name="password">
+
+    <label for="password2">Repeat Password</label>
+    <input type="password" name="password2">
+
+    <button type="submit">Register</button>
+
+    <p class="registration">Already have an account? you can <a href="{% url 'login' %}">log in</a></p>
+</form>
+
+
+{% endblock content %}

@@ -1,16 +1,7 @@
+{% extends 'registration/loginbase.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} Looking2Stay {% endblock title %}</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'lookingtostay/img/favicon.ico' %}">
-    <link rel="stylesheet" href="{% static 'lookingtostay/css/user_base.css' %}">
-</head>
-<body class="user_pages">
-
+{% block title %} Login - {{ block.super }}{% endblock title %}
+{% block content %}
 {% if form.errors %}
     <p class="form-error">Login error, please try again.</p>
   {% endif %}
@@ -36,6 +27,4 @@
 
     <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
   </form>
-  
-
-</body>
+  {% endblock content %}

@@ -1,5 +1,7 @@
 body {
-    background-color: rgba(251, 231, 202, 0.815);
+    /* background-color: rgba(251, 231, 202, 0.815); */
+    /* background-image: url('img/background.jpg'); */
+    background-size: cover;
     font-family: 'Verdana';
     margin: 0;
     display: flex;
@@ -20,6 +22,7 @@ header, main, footer {
 .banner-img {
     /* background-image: url('img/bg.jpg'); */
     background-color: rgb(217, 183, 124);
+    
 }
 
 .logo {
