@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Looking2Stay {% endblock title %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'lookingtostay/img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'lookingtostay/css/user_base.css' %}">
+</head>
+<body class="user_pages">
+
+{% if form.errors %}
+    <p class="form-error">Login error, please try again.</p>
+  {% endif %}
+  
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p class="form-error">Permission error. You need a permission to see this page</p>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <h3><b>Log In</b></h3>
+
+    <label for="username">Username</label>
+    <td class="input">{{ form.username }}</td>
+
+    <label for="password">Password</label>
+    <td class="input">{{ form.password }}</td><br>
+
+    <input class="button" type="submit" value="Login" />
+    <input type="hidden" name="next" value="{{ next }}" /><br>
+
+    <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+  </form>
+  
+
+</body>
