@@ -4,6 +4,7 @@
 {% block content%}
 <div class="sidegap">
     <h1>{{ object.hotel_name }}</h1>
+    <h2>Rating***</h2>
     <div class="toppage">
         <h3>&#128204;{{ object.address }} {{ object.city }}</h3>
         <h5><i>From </i>{{ hotel.price_from }} {{ hotel.type_currency }}<i> per night </i></h5>
@@ -36,13 +37,19 @@
     </ul>
     {% endfor %}
 </div>
+<hr class="hr-text" data-content="Looking2Stay">
 <div class="description sidegap">
     <h4>Description</h4>
     <p>{{ hotel.description }}</p>
 </div>
+<hr class="hr-text" data-content="Looking2Stay">
 <div class="propertyrooms sidegap">
     <h3>Rooms</h3>
-    {{ object.room_name }}
+    {% for room in object.room_types.all %}
+    <ul class="rooms">
+        <li><img class="room_img center" src="{% static 'lookingtostay/img/room_img.png' %}"><p class="rname">{{ room.name }}</p><p class="people">{{ room.people }}<p><p class="nightprice">xNights, xtotalprice {{ room.currency_type }}</p><button class="roombtn">Make a Reservation</button> </li>
+    </ul>
+    {% endfor%}
 </div>
 {% comment %} {{ object.amenities }} {% endcomment %}
 {% endblock content%}

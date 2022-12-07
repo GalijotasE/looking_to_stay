@@ -2,6 +2,7 @@
 {% block title %} Welcome to {{ block.super }}{% endblock title %}
 {% block content%}
 <h1 class="center">Make a reservation for your dream stay today!</h1>
+<hr class="hr-text" data-content="Looking2Stay">
     <p class="center">
     We have {{ num_hotels }} properties registered with us, 
     in {{ num_categories }} different categories, 
@@ -12,7 +13,7 @@
         {% comment %} DESTINATION {% endcomment %}
         <div>
             <span class="form-group">
-                <label class="form-label">Destination</label>
+                <label class="form-label">Location</label>
                 <input class="form-control" type="text" placeholder="Enter Address, City, Country">
             </span>
             {% comment %} GUESTS {% endcomment %}
