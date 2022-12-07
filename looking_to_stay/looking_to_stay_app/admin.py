@@ -48,7 +48,7 @@ class CurrencyAdmin(admin.ModelAdmin):
 class RoomTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name','price','currency_type', 'people')
     readonly_fields = ('id',)
-    list_display_links = ('price',)
+    list_display_links = ('name',)
 
 
 class AmenitiesAdmin(admin.ModelAdmin):

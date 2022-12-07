@@ -1,0 +1,28 @@
+{% extends 'lookingtostay/base.html' %}
+{% load static %}
+{% block title %} Profile - {{ block.super }}{% endblock title %}
+{% block content%}
+<div class="profile center">
+    <h1></h1>
+    {% if user.profile and user.profile.photo %}
+    <img src="{{ user.profile.photo.url }}" class="user-profile-photo">
+    {% endif %}
+    <div class="profilewin">
+    {% if user.first_name or user.last_name %}
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1> {% endif %}
+        <h2>{{ user.email }}<br>
+            {{ user.country }}<br>
+            {% if user.is_user == True %} Regular {% else %} Company {% endif %} Account
+    </h2>
+
+        {% comment %} <p class="text">Name: {{ user.first_name }} {{ user.last_name }}</p>    {% endif %}
+        <p class="text">E-mail: {{ user.email }}</p>
+        <p class="text">Country: {{ user.country }}</p>
+        <p class="text">Account type: {% if user.is_user == True %} User {% else %} Company {% endif %}</p>
+        <p><a class="button" href="{% url 'update_profile' %}">Update Info</a></p>
+    </div> {% endcomment %}
+
+    </div>
+<h1 class="reservations center"> My Reservations</h1>
+</div>
+{% endblock content %}

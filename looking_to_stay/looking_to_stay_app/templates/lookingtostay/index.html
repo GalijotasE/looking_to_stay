@@ -1,12 +1,48 @@
 {% extends 'lookingtostay/base.html' %}
 {% block title %} Welcome to {{ block.super }}{% endblock title %}
 {% block content%}
-<h1>Book your dream stay today!</h1>
-    <p>
-    We have {{ num_hotels }} hotels registered with us,<br>
-    in {{ num_categories }} different categories,<br>
+<h1 class="center">Make a reservation for your dream stay today!</h1>
+    <p class="center">
+    We have {{ num_hotels }} properties registered with us, 
+    in {{ num_categories }} different categories, 
     from over {{ num_countries }} countries!<br>
-    Book your stay now!<br>
+    Make your reservation now! 
     </p>
-
+    <form class="reservationfield center">
+        {% comment %} DESTINATION {% endcomment %}
+        <div>
+            <span class="form-group">
+                <label class="form-label">Destination</label>
+                <input class="form-control" type="text" placeholder="Enter Address, City, Country">
+            </span>
+            {% comment %} GUESTS {% endcomment %}
+            <span class="form-group">
+                <label class="form-label">Guests</label>
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </span>
+        </div>
+        <p></p>
+            {% comment %} CHECK IN {% endcomment %}
+        <div>
+            <span class="form-group">
+                <span class="form-label">Check In</span>
+                <input class="form-control" type="date" required>
+            </span>
+            {% comment %} CHECK OUT {% endcomment %}
+            <span class="form-group">
+                <span class="form-label">Check out</span>
+                <input class="form-control" type="date" required>
+            </span>
+        </div>
+        <p></p>
+        {% comment %} BUTTON {% endcomment %}
+        <span class="form-btn">
+            <button class="submit-btn">Check availability</button>
+        </span>
+    </form>
 {% endblock content%}

@@ -36,9 +36,13 @@
     </ul>
     {% endfor %}
 </div>
-<div class="sidegap">
+<div class="description sidegap">
     <h4>Description</h4>
     <p>{{ hotel.description }}</p>
+</div>
+<div class="propertyrooms sidegap">
+    <h3>Rooms</h3>
+    {{ object.room_name }}
 </div>
 {% comment %} {{ object.amenities }} {% endcomment %}
 {% endblock content%}

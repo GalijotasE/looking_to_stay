@@ -1,6 +1,6 @@
 body {
-    background-color: rgba(251, 231, 202, 0.815);
-    /* background-image: url('img/background.jpg'); */
+    /* background-color: rgba(251, 231, 202, 0.815); */
+    background-image: url('img/background.jpg');
     background-size: 100%;
     background-attachment: fixed;
     font-family: 'Verdana';
@@ -28,7 +28,8 @@ header, main {
 .banner-img {
     /* background-image: url('img/bg.jpg'); */
     /* background-color: rgba(217, 183, 124, 0.5); */
-    background-color: rgba(217, 183, 124, 0.2);
+    /* background-color: rgba(217, 183, 124, 0.2); */
+    background-color: rgba(251, 231, 202, 0.815);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
@@ -62,7 +63,7 @@ header a {
 }
 
 header a:hover {
-    background-color: rgba(203, 161, 89, 0.5);
+    background-color: rgba(252, 214, 160, 0.815);;
 }
 
 h1 {
@@ -80,7 +81,7 @@ ul.hotel_list {
 ul.hotel_list li.hotel {
     flex-basis: 15rem;
     border: none;
-    background-color: rgba(217, 183, 124, 0.2);
+    background-color: rgba(251, 231, 202, 0.815);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
@@ -90,7 +91,7 @@ ul.hotel_list li.hotel {
 
 /* property list individualios lenteles hover */
 ul.hotel_list li.hotel:hover {
-    background-color: rgb(197, 149, 67);
+    background-color: rgba(252, 214, 160, 0.815);;
 }
 
 ul.hotel_list li.hotel img {
@@ -143,7 +144,7 @@ ul.cat {
 ul.cat li a {
     text-decoration: none;
     padding: 12px 16px;
-    background-color: rgba(217, 183, 124, 0.2);
+    background-color: rgba(251, 231, 202, 0.815);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(8,7,16,0.6);
@@ -151,7 +152,7 @@ ul.cat li a {
 }
 
 ul.cat li a:hover {
-    background-color:rgb(203, 161, 89);
+    background-color:rgba(252, 214, 160, 0.815);;
 }
 
 
@@ -201,4 +202,74 @@ ul.cat li a:hover {
 /* paginator mygtuko spalva hover */
 .paginator a:hover {
     background-color:rgb(203, 161, 89);
+}
+
+.profile {
+    margin-left: 2.4rem;
+}
+
+.profilewin {
+    background-color: rgba(0, 0, 0, 0.161);
+}
+.user-profile-photo {
+    min-width: 250px;
+    max-width: 250px;
+    border-radius: 100%;
+    
+}
+
+h1.reservations {
+    margin-top: 7rem;
+}
+
+.reservationfield {
+    height: 220px;
+
+    background-color: rgba(251, 231, 202, 0.815);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 60px 35px;
+}
+
+.reservationfield .form-group {
+    position: relative;
+	height: 60px;
+	margin-right: 20px;
+    padding-top: 20px;
+
+}
+
+.reservationfield .form-control {
+	background-color: transparent;
+	border-radius: 0px;
+	border: none;
+	height: 40px;
+	font-size: 15px;
+	color: #333;
+	font-weight: 600;
+	background: rgba(255, 255, 255, 0.85);
+	padding: 10px;
+}
+
+.reservationfield .form-label {
+    font-weight: 900;
+    color: rgb(70, 39, 0);
+}
+
+.reservationfield .submit-btn {
+	background: #ddbb9382;
+	border: none;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	height: 70px;
+	border-radius: 10px;
+	font-size: 18px;
+	width: 40%;
+	color: rgb(70, 39, 0);
+}
+
+.reservationfield .submit-btn:hover {
+    background-color: rgba(252, 214, 160, 0.815);;
+    cursor: pointer;
 }
