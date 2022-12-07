@@ -15,7 +15,7 @@
         <div class="banner-img">
             <div class="container">
                 {% block nav %}
-                    <img class="logo" src="{% static 'lookingtostay/img/lookingtostaylogo.png' %}">
+                <a href="{% url 'index' %}"><img class="logo" src="{% static 'lookingtostay/img/ltos.png' %}"></a>
                     {% comment %} <a href="{% url 'index' %}">Stays</a> {% endcomment %}
                     <a href="{% url 'hotels' %}">Properties</a>
                     <a href="{% url 'locations' %}">Locations</a>

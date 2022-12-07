@@ -21,6 +21,10 @@ header, main {
     min-width: fit-content;
 }
 
+.banner-img a img {
+    margin: -23px;
+}
+
 .banner-img {
     /* background-image: url('img/bg.jpg'); */
     /* background-color: rgba(217, 183, 124, 0.5); */
@@ -54,6 +58,7 @@ header a {
     color: rgb(70, 39, 0);
     padding: 1.5rem;
     text-decoration: none;
+    font-weight: 900
 }
 
 header a:hover {
@@ -133,6 +138,20 @@ ul.cat {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+}
+
+ul.cat li a {
+    text-decoration: none;
+    padding: 12px 16px;
+    background-color: rgba(217, 183, 124, 0.2);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+    color: rgb(70, 39, 0);
+}
+
+ul.cat li a:hover {
+    background-color:rgb(203, 161, 89);
 }
 
 

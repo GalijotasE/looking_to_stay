@@ -5,14 +5,11 @@
 <h1 class="hotelheader">Categories</h1>
 <div>
     <ul class="cat">
+        <li><a href="{% url 'hotels' %}">Show All</a></li>
         {% for filter_category in categories %}
         <li class="{% if filter_category == category %}current{% endif %}">{{ filter_category.link_filtered_hotels }}</li>
         {% endfor %}
     </ul>
-    {% comment %} <form class='searchmethod' action="{% url 'hotels' %}" method="get">
-        <input type="text" name="search", value="{{ request.GET.search }}">
-        <button type="submit">Search</button>
-    </form> {% endcomment %}
 </div>
 <h1 class="hotelheader"> Property list </h1>
 <ul class="hotel_list">
