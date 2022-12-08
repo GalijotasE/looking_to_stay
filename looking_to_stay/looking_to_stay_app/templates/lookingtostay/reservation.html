@@ -2,5 +2,13 @@
 {% load static %}
 {% block title %}{{ object }} - {{ block.super }}{% endblock title %}
 {% block content%}
-
+    <h1 class="center">Make a Reservation</h1>
+    <div class="center">
+        <form class="resform" action="" method="post">
+            {% if reservation %}<p>{{ reservation.property }}</p>{% endif %}
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Reserve</button>
+        </form>
+    </div>
 {% endblock content%}

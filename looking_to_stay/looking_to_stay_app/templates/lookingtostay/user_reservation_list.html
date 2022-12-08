@@ -1,0 +1,30 @@
+{% extends 'lookingtostay/base.html' %}
+{% load static %}
+{% block title %} List Of Locations - {{ block.super }}{% endblock title %}
+{% block content%}
+    <h3 class="reservations center"> My Reservations</h3>
+    <div class="tablemiddle">
+        <table class="myreservations">
+            <tr>
+                <th class="photo"></th>
+                <th>Hotel</th>
+                <th>Location</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th></th>
+            </tr>
+            {% for rsrv in reservation_list %}
+                <tr>
+                <td class="photo"><img src="{{ BASIC_DIR }}/media/{{ rsrv.property.cover_photo }}"></td>
+                    <td>{{ rsrv.property }}</td>
+                    <td>{{ rsrv.property.city }}</td>
+                    <td>{{ rsrv.check_in }}</td>
+                    <td>{{ rsrv.check_out }}</td>
+                    <td>Change/Cancel</td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+    <hr class="hr-text" data-content="Looking2Stay">
+{% endblock content%}

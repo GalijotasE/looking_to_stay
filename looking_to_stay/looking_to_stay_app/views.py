@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from .models import Hotel, Country, Category, Amenities
-from django.views.generic import ListView, DetailView
-from django.core.paginator import Paginator
+from .models import Hotel, Country, Category, Reservation
+from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from django.urls import reverse
+from django.urls import reverse_lazy
+from .forms import ReservationForm
 
 
 def index(request):
@@ -21,15 +22,9 @@ def index(request):
     return render(request, 'lookingtostay/index.html', context=context)
 
 
-# def hotels(request):
-#     paginator = Paginator(Hotel.objects.all(), 10)
-#     page_number = request.GET.get('page')
-#     paged_hotels = paginator.get_page(page_number)
-#     return render(request, 'lookingtostay/hotels.html', {'hotels': paged_hotels})
+def about_us(request):
+    return render(request, 'lookingtostay/about_us.html', )
 
-
-def locations(request):
-    return render(request, 'lookingtostay/locations.html', )
 
 class HotelDetailView(DetailView):
     model = Hotel
@@ -38,14 +33,6 @@ class HotelDetailView(DetailView):
     def hotel(request, hotel_id):
         single_hotel = get_object_or_404(Hotel, pk=hotel_id)
         return render(request, 'lookingtostay/hotel_detail.html', {'hotel': single_hotel})
-
-    # def all_amenities(request):
-    #     single_amenity = Hotel.amenities.all()
-    #     return render(request, 'lookingtostay/hotel_detail.html', {'single_amenity': single_amenity})
-
-
-    # def get_success_url(self):
-    #     return reverse('hotel', kwargs={'pk': self.get_object().id})
 
 
 class HotelListView(ListView):
@@ -72,5 +59,18 @@ class HotelListView(ListView):
             context['category'] = get_object_or_404(Category, id=category_id)
         return context
 
-def makereservation(request):
-    return render(request, 'lookingtostay/reservation.html')
+
+class UserHotelListView(LoginRequiredMixin, ListView):
+    model = Reservation
+    template_name = 'lookingtostay/user_reservation_list.html'
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(user=self.request.user).order_by('property')
+        return queryset
+        
+class UserReservationCreateView(LoginRequiredMixin, CreateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = 'lookingtostay/reservation.html'
+    success_url = reverse_lazy('user_reservations')

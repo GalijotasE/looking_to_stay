@@ -166,24 +166,8 @@ class Reservation(models.Model):
     check_in = models.DateField(verbose_name="check_in", blank=True, null=True)
     check_out = models.DateField(verbose_name="check_out", blank=True, null=True)
     special_requests = models.TextField('Special requests', max_length=10000)
-
-    def __str__(self) -> str:
-        return f'{self.user} {self.property}'
-
-    class Meta:
-        ordering = ['user', ]
-
-
-class ReservationStatus(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique reservation ID")
-    reservation = models.ForeignKey(
-        Reservation, on_delete=models.SET_NULL,
-        null=True, blank=True,
-    )
-    check_in = models.DateField(verbose_name="check_in", blank=True, null=True)
-    check_out = models.DateField(verbose_name="check_out", blank=True, null=True)
-
     RES_STAT = (
+        ('d', 'Drafted'),
         ('u', 'Unoccupied'),
         ('r', 'Reserved'),
         ('o', 'Occupied'),
@@ -198,7 +182,10 @@ class ReservationStatus(models.Model):
     )
 
     def __str__(self) -> str:
-        return f'{self.reservation} {self.status}'
+        return f'{self.property} {self.check_in} - {self.check_out}'
+
+    class Meta:
+        ordering = ['user', ]
 
 
 # class Reviews(models.Model):

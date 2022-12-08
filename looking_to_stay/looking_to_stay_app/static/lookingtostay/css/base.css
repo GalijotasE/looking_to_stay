@@ -4,11 +4,11 @@ body {
     background-attachment: fixed;
     font-family: 'Verdana';
     margin: 0;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: flex-start;
     min-height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
 }
 
 /* atstumas nuo kaires */
@@ -200,13 +200,6 @@ ul.cat li a:hover {
     background-color:rgb(203, 161, 89);
 }
 
-.profile {
-    margin-left: 2.4rem;
-}
-
-.profilewin {
-    background-color: rgba(0, 0, 0, 0.161);
-}
 .user-profile-photo {
     min-width: 250px;
     max-width: 250px;
@@ -320,4 +313,66 @@ h1.reservations {
 .table-grid button {
     padding: 12px 16px;
     
+}
+
+.myreservations {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+.myreservations td, .myreservations th {
+    border: 1px solid rgb(250, 194, 81);
+    padding: 8px;
+  }
+
+.myreservations th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgba(245, 213, 166, 0.815);
+    color: rgb(70, 39, 0);
+}
+
+.myreservations td {
+    background-color: rgba(251, 231, 202, 0.815);
+}
+
+.myreservations img {
+    max-width: 130px;
+    margin-right: -2rem;
+    padding-right: 0.1rem;
+}
+
+.resform {
+    background-color: rgba(251, 231, 202, 0.815);
+    padding: 1rem;
+    color: rgb(70, 39, 0);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    width: 40%;
+    margin-left: 25%;
+    position: absolute
+}
+
+.resform p {
+    display: flex;
+    flex-direction: column;
+    right: 20rem;
+
+}
+
+.resform input, select {
+    height: 25px;
+    font-size: 25px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+}
+
+.resform textarea {
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
 }
