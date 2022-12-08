@@ -1,12 +1,12 @@
 {% extends 'lookingtostay/base.html'%}
 {% block title %}Updating {{ user }} Profile - {{ block.super }}{% endblock title %}
 {% block content %}
-<h1>Updating Profile</h1>
+<h1 class="center">Updating Profile</h1>
 <form action="" method="post", enctype="multipart/form-data">
     {% csrf_token %}
     {{ user_form.errors }}
     {{ profile_form.errors }}
-    <div class="table-grid form-grid">
+    <div class="table-grid form-grid center">
         <div>{{ user_form.first_name.label }}</div>
         <div>{{ user_form.first_name }}</div>
         <div>{{ user_form.last_name.label }}</div>
@@ -17,7 +17,7 @@
         <div>{{ user_form.country }}</div>
         <div>{{ profile_form.photo.label }}</div>
         <div>{{ profile_form.photo }}</div>
+        <p><button type="submit">Update</button></p>
     </div>
-    <p><button type="submit">Update</button></p>
 </form>
 {% endblock content %}

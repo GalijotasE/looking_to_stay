@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.html import format_html
 from django.urls import reverse
+import uuid
+from django.conf import settings
 
 
 class Country(models.Model):
@@ -100,6 +103,7 @@ class RoomType(models.Model):
         null=True, blank=True
     )
     people = models.IntegerField('People', help_text='Amount of people fit in this room')
+    total_rooms = models.IntegerField('Rooms', help_text="Total amount of rooms of this type")
     
     def __str__(self) -> str:
         return f'{self.name} - {self.price} a night'
@@ -137,48 +141,66 @@ class Hotel(models.Model):
 
     class Meta:
         ordering = ['hotel_name',]
-        verbose_name = 'Hotel'
-        verbose_name_plural = 'Hotels'
+
+class Reservation(models.Model):
+    user = models.ForeignKey(
+        get_user_model(),
+        verbose_name='user',
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+    )
+    first_name = models.CharField('First name', max_length=100)
+    last_name = models.CharField('Last name', max_length=100)
+    country = models.CharField('Country', max_length=100)
+    city = models.CharField('City', max_length=100)
+    post_code = models.CharField('Post code', max_length=10)
+    address = models.CharField('Address', max_length=255)
+    property = models.ForeignKey(
+        Hotel, on_delete=models.SET_NULL,
+        null=True, blank=True,
+    )
+    roomtype = models.ForeignKey(
+        RoomType, on_delete=models.SET_NULL,
+        null=True, blank=True
+    )
+    check_in = models.DateField(verbose_name="check_in", blank=True, null=True)
+    check_out = models.DateField(verbose_name="check_out", blank=True, null=True)
+    special_requests = models.TextField('Special requests', max_length=10000)
+
+    def __str__(self) -> str:
+        return f'{self.user} {self.property}'
+
+    class Meta:
+        ordering = ['user', ]
 
 
+class ReservationStatus(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique reservation ID")
+    reservation = models.ForeignKey(
+        Reservation, on_delete=models.SET_NULL,
+        null=True, blank=True,
+    )
+    check_in = models.DateField(verbose_name="check_in", blank=True, null=True)
+    check_out = models.DateField(verbose_name="check_out", blank=True, null=True)
 
+    RES_STAT = (
+        ('u', 'Unoccupied'),
+        ('r', 'Reserved'),
+        ('o', 'Occupied'),
+    )
 
+    status = models.CharField(
+        max_length=1,
+        choices=RES_STAT,
+        blank=True,
+        default='u',
+        help_text='Reservation Status'
+    )
 
-# class Room(models.Model):
-#     id = models.AutoField('Unique Id', primary_key=True)
-#     room_name = models.CharField('Room name', max_length=255)
-#     room_type_id = models.ForeignKey(
-#         RoomType, on_delete=models.SET_NULL,
-#         null=True, blank=True
-#     )
-#     hotel_id = models.ForeignKey(
-#         Hotel, on_delete=models.SET_NULL,
-#         null=True, blank=True
-#     )
-
-#     def __str__(self) -> str:
-#         return self.room_name
-
-#     class Meta:
-#         ordering = ['room_name',]
-
+    def __str__(self) -> str:
+        return f'{self.reservation} {self.status}'
 
 
 # class Reviews(models.Model):
 #     pass
 
-
-# class RoomReserved(models.Model):
-#     pass
-
-
-# class Reservation(models.Model):
-#     pass
-
-
-# class ReservationStatus(models.Model):
-#     pass
-
-
-# class User(models.Model):
-#     pass

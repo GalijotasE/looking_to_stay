@@ -44,10 +44,19 @@ class RoomTypeAdmin(admin.ModelAdmin):
 class AmenitiesAdmin(admin.ModelAdmin):
     list_display = ('id', 'amenity')
     readonly_fields = ('id', )
-    list_display = ('amenity',)
     search_fields = ('amenity',)
 
-
+class ReservationStatusAdmin(admin.ModelAdmin):
+    list_display = ('reservation', 'check_in', 'check_out', 'id')
+    readonly_fields = ('id', )
+    list_display_links = ('reservation', 'id', )
+    search_fields = ('reservation', 'check_in', 'check_out', 'id')
+    
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ('user', 'property', 'roomtype')
+    readonly_fields = ('user', )
+    list_display_links = ('user', 'property')
+    search_fields = ('user', 'property')
 
 admin.site.register(models.Country, CountryAdmin)
 admin.site.register(models.City, CityAdmin)
@@ -57,3 +66,5 @@ admin.site.register(models.Currency, CurrencyAdmin)
 admin.site.register(models.RoomType, RoomTypeAdmin)
 admin.site.register(models.Amenities, AmenitiesAdmin)
 admin.site.register(models.HotelImage)
+admin.site.register(models.ReservationStatus, ReservationStatusAdmin)
+admin.site.register(models.Reservation, ReservationAdmin)

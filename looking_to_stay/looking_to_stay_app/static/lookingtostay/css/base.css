@@ -1,5 +1,4 @@
 body {
-    /* background-color: rgba(251, 231, 202, 0.815); */
     background-image: url('img/background.jpg');
     background-size: 100%;
     background-attachment: fixed;
@@ -26,9 +25,6 @@ header, main {
 }
 
 .banner-img {
-    /* background-image: url('img/bg.jpg'); */
-    /* background-color: rgba(217, 183, 124, 0.5); */
-    /* background-color: rgba(217, 183, 124, 0.2); */
     background-color: rgba(251, 231, 202, 0.815);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
@@ -298,12 +294,30 @@ h1.reservations {
 	content: attr(data-content);
 	position: relative;
 	display: inline-block;
-  font-weight: 900;
+    font-weight: 900;
 	color: black;
 	padding: 0 .5em;
 	line-height: 1.5em;
 	color: #000000;
 	background-color: rgba(251, 231, 202, 0.815);;
-  border-radius: 15px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.table-grid {
+    padding: 12px 16px;
+    background-color: rgba(251, 231, 202, 0.815);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+    color: rgb(70, 39, 0);
+    position: absolute;
+    right: 25%;
+    width: 50%;
+    height: 50%;
+}
+
+.table-grid button {
+    padding: 12px 16px;
+    
 }

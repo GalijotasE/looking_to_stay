@@ -45,11 +45,23 @@
 <hr class="hr-text" data-content="Looking2Stay">
 <div class="propertyrooms sidegap">
     <h3>Rooms</h3>
+    <table class="rooms">
+        <tr>
+            <th></th>
+            <th>Room Type</th>
+            <th>People</th>
+            <th>Total Price</th>
+            <th></th>
+        </tr>
     {% for room in object.room_types.all %}
-    <ul class="rooms">
-        <li><img class="room_img center" src="{% static 'lookingtostay/img/room_img.png' %}"><p class="rname">{{ room.name }}</p><p class="people">{{ room.people }}<p><p class="nightprice">xNights, xtotalprice {{ room.currency_type }}</p><button class="roombtn">Make a Reservation</button> </li>
-    </ul>
+        <tr>
+            <td><img class="room_img center" src="{% static 'lookingtostay/img/room_img.png' %}">
+            <td>{{ room.name }}</td>
+            <td>{{ room.people }}</td>
+            <td>{{ room.price }} {{ room.currency_type }}</td>
+            <td><button class="roombtn" ><a href="{% url 'reservation' %}">Make a Reservation</a></button></td>
+        </tr>
     {% endfor%}
 </div>
-{% comment %} {{ object.amenities }} {% endcomment %}
+
 {% endblock content%}

@@ -18,9 +18,9 @@
         {% comment %} <p class="text">Name: {{ user.first_name }} {{ user.last_name }}</p>    {% endif %}
         <p class="text">E-mail: {{ user.email }}</p>
         <p class="text">Country: {{ user.country }}</p>
-        <p class="text">Account type: {% if user.is_user == True %} User {% else %} Company {% endif %}</p>
+        <p class="text">Account type: {% if user.is_user == True %} User {% else %} Company {% endif %}</p> {% endcomment %}
         <p><a class="button" href="{% url 'update_profile' %}">Update Info</a></p>
-    </div> {% endcomment %}
+    </div>
 
     </div>
     <hr class="hr-text" data-content="Looking2Stay">

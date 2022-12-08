@@ -56,7 +56,7 @@
 }
 
 .description {
-  background-color: rgba(251, 231, 202, 0.815);;
+  background-color: rgba(251, 231, 202, 0.815);
   padding: 1rem;
   color: rgb(70, 39, 0);
   border: 2px solid rgba(255,255,255,0.1);
@@ -69,7 +69,7 @@
 	position: relative;
 	outline: 0;
 	border: 0;
-	color: black;
+	color: rgb(70, 39, 0);
 	text-align: center;
 	height: 1.5em;
 	opacity: .7;
@@ -89,55 +89,59 @@
 	position: relative;
 	display: inline-block;
   font-weight: 900;
-	color: black;
+	color: rgb(70, 39, 0);
 	padding: 0 .5em;
 	line-height: 1.5em;
-	color: #000000;
 	background-color: rgba(251, 231, 202, 0.815);;
   border-radius: 15px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-ul.rooms li {
-  list-style: none;
-  background-color: rgba(251, 231, 202, 0.815);;
+.rooms {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.rooms td, .rooms th {
+  border: 1px solid rgb(250, 194, 81);
+  padding: 8px;
+}
+
+.rooms th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgba(245, 213, 166, 0.815);
+  color: rgb(70, 39, 0);
+}
+
+.rooms td {
+  background-color: rgba(251, 231, 202, 0.815);
+}
+
+.rooms img {
+  max-width: 70px;
+  margin-left: 8px;
+  margin-right: -30px;
+}
+
+.rooms button.roombtn {
+  background-color: rgba(251, 231, 202, 0.815);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-right: -7rem;
+  border-radius: 10px;
+}
+
+.rooms button.roombtn a {
+  text-decoration: none;
+  color: rgb(70, 39, 0);
   padding: 2rem;
-  color: rgb(70, 39, 0);
-  border: 2px solid rgba(255,255,255,0.1);
   border-radius: 10px;
-  box-shadow: 0 0 40px rgba(8,7,16,0.6);
-  margin-left: -2.4rem;
-  max-width: 100%;
-  /* display: flex;
-  flex-direction: row; */
-  
-}
-/* 
-button.roombtn {
-  border: none;
-  float: right;
-  padding: 1rem;
-  margin-top: -1rem;
-  border-radius: 10px;
-  background-color: rgba(251, 231, 202, 0.815);;
-  border: 2px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  box-shadow: 0 0 40px rgba(8,7,16,0.6);
-  font-weight: 600;
-  color: rgb(70, 39, 0);
+
 }
 
-button.roombtn:hover {
-  background-color: rgba(203, 161, 89, 0.5); ;
-  cursor: pointer;
-}
-
-ul.rooms li p {
-  display: inline;
-  
-} */
-
-.room_img {
-  max-width: 50px;
-  margin-right: 2rem;
+.rooms button.roombtn:hover {
+  background-color: rgba(203, 161, 89, 0.5);
 }
