@@ -71,3 +71,6 @@ class HotelListView(ListView):
         if category_id:
             context['category'] = get_object_or_404(Category, id=category_id)
         return context
+
+def makereservation(request):
+    return render(request, 'lookingtostay/reservation.html')
