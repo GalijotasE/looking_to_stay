@@ -1,0 +1,37 @@
+{% extends 'lookingtostay/base.html' %}
+{% load static %}
+{% block title %}{{ object }} - {{ block.super }}{% endblock title %}
+{% block content%}
+    <h1 class="rd center">Reservation receipt</h1>
+    <h2 class="rd center">Property: {{ object.property }}<br>Property type: {{ object.property.category }}</h2>
+    <h2 class="rd center">Dates:<br> {{ object.check_in }} - {{ object.check_out }}</h3>
+    <div class="center">
+        <div class="resgallery">
+            <img src="{{ object.property.hotel_images.hotel_img1.url }}">
+        </div>
+        <div class="resgallery">
+            <img src="{{ object.property.hotel_images.hotel_img2.url }}">
+        </div>
+        <div class="resgallery">
+            <img src="{{ object.property.hotel_images.hotel_img3.url }}">
+        </div>
+        <div class="resgallery">
+            <img src="{{ object.property.hotel_images.hotel_img4.url }}">
+        </div>
+        <div class="resgallery">
+            <img src="{{ object.property.hotel_images.hotel_img5.url }}">
+        </div>
+        <div class="resgallery">
+            <img src="{{ object.property.hotel_images.hotel_img6.url }}">
+        </div>
+    </div>
+    <h2 class="rd center">Selected room type:<br>{{ object.roomtype.name }}</h2>
+    <h2 class="rd center">Special requests:<br><i>{{ object.special_requests }}</i></h2>
+    <h2 class="rd center">Nightly Room rate:<br>{{ object.roomtype.price }} {{ object.roomtype.currency_type }}</h3>
+    <h2 class="rd center">Length of stay:<br> ...nights</h2>
+    <h2 class="rd center">Total:<br>123</h2>
+    <h3 class="rd center">Payment is made upon arrival at the property</h3>
+    <p class="rd center"><a class="rd" href="{% url 'index' %}">Click here to make changes to this reservation</a></p>
+
+
+{% endblock content %}

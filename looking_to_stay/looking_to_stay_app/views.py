@@ -74,3 +74,16 @@ class UserReservationCreateView(LoginRequiredMixin, CreateView):
     form_class = ReservationForm
     template_name = 'lookingtostay/reservation.html'
     success_url = reverse_lazy('user_reservations')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.status = 'r'
+        return super().form_valid(form)
+    
+class UserReservationDetailView(LoginRequiredMixin, DetailView):
+    model = Reservation
+    template_name = 'lookingtostay/reservation_detail.html'
+
+    def reservation(request, reservation_id):
+        single_reservation = get_object_or_404(Reservation, pk=reservation_id)
+        return render(request, 'lookingtostay/reservation_detail.html', {'reservation': single_reservation})

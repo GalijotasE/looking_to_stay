@@ -3,6 +3,7 @@ from django import forms
 from . models import Reservation
 from django.utils.timezone import datetime, timedelta
 
+
 class DateInput(forms.DateInput):
     input_type = 'date'
 

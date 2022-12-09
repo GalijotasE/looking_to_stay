@@ -376,3 +376,77 @@ h1.reservations {
     border: none;
     border-radius: 10px;
 }
+
+td.photo {
+    text-align: left;
+}
+
+td.view {
+    background-color: rgba(251, 231, 202, 0.815);
+    margin-right: 0;
+    border-radius: 10px;
+    text-align: center;
+}
+  
+td.view a {
+    text-decoration: none;
+    color: rgb(70, 39, 0);
+    padding: 2rem;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+  
+td.view a:hover {
+    background-color: rgba(203, 161, 89, 0.8);
+}
+
+.resgallery {
+    --s: 130px; /* control the size */
+    --g: 10px;  /* control the gap */
+    --f: 1.5;   /* control the scale factor */
+    
+    display: inline-grid;
+    gap: var(--g);
+    width: calc(1*var(--s) + 9*var(--g));
+    aspect-ratio: 1;
+}
+
+.resgallery > img {
+    width: 0;
+    height: 0;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    filter: grayscale(80%);
+    transition: .35s linear;
+}
+
+.resgallery img:hover{
+    filter: grayscale(0);
+    width:  calc(var(--s)*var(--f));
+    height: calc(var(--s)*var(--f));
+  }
+
+h2.rd, h3.rd, a.rd{
+    color: rgb(70, 39, 0);
+    background-color: rgba(251, 231, 202, 0.815);
+    border-radius: 10px;
+    margin: 1rem 25%;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+}
+
+a.rd {
+    text-decoration: none;
+}
+
+a.rd:hover {
+    background-color: rgba(252, 214, 160, 0.815);;
+}
+
+p.rd {
+    padding: 2rem;
+    font-size: 20px;
+    font-weight: 600;
+}

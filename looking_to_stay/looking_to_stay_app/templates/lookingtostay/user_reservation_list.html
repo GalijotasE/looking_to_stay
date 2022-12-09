@@ -1,6 +1,6 @@
 {% extends 'lookingtostay/base.html' %}
 {% load static %}
-{% block title %} List Of Locations - {{ block.super }}{% endblock title %}
+{% block title %} List Of Reservations - {{ block.super }}{% endblock title %}
 {% block content%}
     <h3 class="reservations center"> My Reservations</h3>
     <div class="tablemiddle">
@@ -20,9 +20,8 @@
                     <td>{{ rsrv.property.city }}</td>
                     <td>{{ rsrv.check_in }}</td>
                     <td>{{ rsrv.check_out }}</td>
-                    <td>Change/Cancel</td>
+                    <td class="view"><a href="{% url 'user_detail_reservation' rsrv.pk %}">View</a></td>
                 </tr>
-
             {% endfor %}
         </table>
     </div>
