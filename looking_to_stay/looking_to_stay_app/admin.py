@@ -51,6 +51,10 @@ class ReservationAdmin(admin.ModelAdmin):
     list_display_links = ('user', 'property')
     search_fields = ('user', 'property')
 
+class ReviewRatingAdmin(admin.ModelAdmin):
+    list_display = ('user', 'subject', 'rating')
+    list_display_links = ('user', 'subject')
+
 admin.site.register(models.Country, CountryAdmin)
 admin.site.register(models.City, CityAdmin)
 admin.site.register(models.Hotel, HotelAdmin)
@@ -60,3 +64,4 @@ admin.site.register(models.RoomType, RoomTypeAdmin)
 admin.site.register(models.Amenities, AmenitiesAdmin)
 admin.site.register(models.HotelImage)
 admin.site.register(models.Reservation, ReservationAdmin)
+admin.site.register(models.ReviewRating, ReviewRatingAdmin)

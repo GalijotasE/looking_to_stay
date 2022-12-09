@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from .models import Hotel, Country, Category, Reservation
+from .models import Hotel, Country, Category, Reservation, ReviewRating
 from django.views.generic import ListView, DetailView, CreateView
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.db.models import Q
 from django.urls import reverse_lazy
-from .forms import ReservationForm
+from .forms import ReservationForm, ReviewForm
 
 
 def index(request):
@@ -32,7 +32,19 @@ class HotelDetailView(DetailView):
 
     def hotel(request, hotel_id):
         single_hotel = get_object_or_404(Hotel, pk=hotel_id)
-        return render(request, 'lookingtostay/hotel_detail.html', {'hotel': single_hotel})
+        review = ReviewRating.objects.filter(single_property = single_hotel)
+
+        return render(request, 'lookingtostay/hotel_detail.html', {'hotel': single_hotel, 'review': review})
+
+    # def reviews(request, hotel_id):
+    #     single_hotel = get_object_or_404(Hotel, pk=hotel_id)
+    #     reviews = ReviewRating.objects.filter(property_id=single_hotel.id, status=True)
+        
+    #     context = {
+    #         'reviews': reviews,
+    #     }
+    #     return render(request, 'lookingtostay/hotel_detail.html', context=context)
+        
 
 
 class HotelListView(ListView):
@@ -58,6 +70,12 @@ class HotelListView(ListView):
         if category_id:
             context['category'] = get_object_or_404(Category, id=category_id)
         return context
+
+    def hotel(request, hotel_id):
+        single_hotel = get_object_or_404(Hotel, pk=hotel_id)
+        review = ReviewRating.objects.filter(single_property = single_hotel)
+
+        return render(request, 'lookingtostay/hotes.html', {'review': review})
 
 
 class UserHotelListView(LoginRequiredMixin, ListView):
@@ -87,3 +105,41 @@ class UserReservationDetailView(LoginRequiredMixin, DetailView):
     def reservation(request, reservation_id):
         single_reservation = get_object_or_404(Reservation, pk=reservation_id)
         return render(request, 'lookingtostay/reservation_detail.html', {'reservation': single_reservation})
+
+def submit_review(request, property_id):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == "POST":
+        try:
+            reviews = ReviewRating.objects.get(user__id=request.user.id, single_property__id=property_id)
+            form = ReviewForm(request.POST, instance=reviews)
+            form.save()
+            # messages.success(request, 'Thank you! Your review has been updated')
+            return redirect(url)
+        except ReviewRating.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = ReviewRating()
+                data.subject = form.cleaned_data['subject']
+                data.rating = form.cleaned_data['rating']
+                data.review = form.cleaned_data['review']
+                data.single_property_id = property_id
+                data.user_id = request.user.id
+                data.save()
+                # messages.success(request, 'Thank you! Your review has been submitted')
+                return redirect(url)
+    context = {
+        ''
+    }
+
+# def submit_review(request, property_id):
+#     url = request.META.get('HTTP_REFERER')
+#     property = get_object_or_404(Hotel, id=property_id)    
+#     review_form = ReviewForm(instance=property)
+#     if request.method == 'POST':       
+#         review_form = ReviewForm(request.POST, instance=property)
+#         if review_form.is_valid():
+#             review = review_form.save(commit=False)
+#             review.user = request.user
+#             review.save()
+#             return redirect(url)   
+#     return render(request, 'lookingtostay/hotel_detail.html', context={'review_form': review_form})

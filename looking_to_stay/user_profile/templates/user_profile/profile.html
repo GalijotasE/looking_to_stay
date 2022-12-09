@@ -14,6 +14,7 @@
         <p class="text">Country: {{ user.country }}</p>
         <p class="text">Account type: {% if user.is_user == True %} User {% else %} Company {% endif %}</p>
         <p><a class="button" href="{% url 'update_profile' %}">Update Info</a></p>
+        <p><a class="button" href="{% url 'user_reservations' %}">My Reservations</a></p>
     </div>
 </div>
 {% endblock content %}

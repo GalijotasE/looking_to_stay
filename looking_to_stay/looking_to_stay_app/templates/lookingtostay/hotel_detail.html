@@ -3,11 +3,19 @@
 {% block title %}{{ object }} - {{ block.super }}{% endblock title %}
 {% block content%}
 <div class="sidegap">
-    <h1>{{ object.hotel_name }}</h1>
-    <h2>Rating***</h2>
+    <h1 class="center">{{ object.hotel_name }}</h1>
+    <div class="rating-star center">
+        <h1>
+            <i class="fa fa-star{% if object.averagereview < 0.5 %}-o{% elif object.averagereview >= 0.5 and object.averagereview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+            <i class="fa fa-star{% if object.averagereview < 1.5 %}-o{% elif object.averagereview >= 1.5 and object.averagereview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+            <i class="fa fa-star{% if object.averagereview < 2.5 %}-o{% elif object.averagereview >= 2.5 and object.averagereview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+            <i class="fa fa-star{% if object.averagereview < 3.5 %}-o{% elif object.averagereview >= 3.5 and object.averagereview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+            <i class="fa fa-star{% if object.averagereview < 4.5 %}-o{% elif object.averagereview >= 4.5 and object.averagereview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+        </h1>
+    </div>
     <div class="toppage">
-        <h3>&#128204;{{ object.address }} {{ object.city }}</h3>
-        <h5><i>From </i>{{ hotel.price_from }} {{ hotel.type_currency }}<i> per night </i></h5>
+        <h3 class="center">&#128204;{{ object.address }} {{ object.city }}</h3>
+        <h5 class="center"><i>From </i>{{ hotel.price_from }} {{ hotel.type_currency }}<i> per night </i></h5>
     </div>
 </div>
 <div class="grid one center">
@@ -37,12 +45,12 @@
     </ul>
     {% endfor %}
 </div>
-<hr class="hr-text" data-content="Looking2Stay">
+<hr class="hr-text" data-content="{{ object }}">
 <div class="description sidegap">
     <h4>Description</h4>
     <p>{{ hotel.description }}</p>
 </div>
-<hr class="hr-text" data-content="Looking2Stay">
+<hr class="hr-text" data-content="{{ object }}">
 <div class="propertyrooms sidegap">
     <h3>Rooms</h3>
     <table class="rooms">
@@ -63,6 +71,58 @@
         </tr>
     {% endfor%}
     </table>
+</div>
+<hr class="hr-text" data-content="{{ object }}">
+<div class="reviews sidegap">
+    <form action="{% url 'submit_review' object.id %}" method="POST">
+        {% csrf_token %}
+        <h3 class="sidegap">Write a review</h3>
+        <div>
+            <div class="review-window">
+                {% comment %} rating stars {% endcomment %}
+                <div class="center">How do you rate this property?</div>
+                <br>
+                <h3 class="size center">
+                    <div class="rate">
+                        <input type="radio" name="rating" id="rating10" value="5" required /><label for="rating10" title="5"></label>
+                        <input type="radio" name="rating" id="rating9" value="4.5" required /><label for="rating9" title="4.5" class="half"></label>
+                        <input type="radio" name="rating" id="rating8" value="4" required /><label for="rating8" title="4"></label>
+                        <input type="radio" name="rating" id="rating7" value="3.5" required /><label for="rating7" title="3.5" class="half"></label>
+                        <input type="radio" name="rating" id="rating6" value="3" required /><label for="rating6" title="3"></label>
+                        <input type="radio" name="rating" id="rating5" value="2.5" required /><label for="rating5" title="2.5" class="half"></label>
+                        <input type="radio" name="rating" id="rating4" value="2" required /><label for="rating4" title="2"></label>
+                        <input type="radio" name="rating" id="rating3" value="1.5" required /><label for="rating3" title="1.5" class="half"></label>
+                        <input type="radio" name="rating" id="rating2" value="1" required /><label for="rating2" title="1"></label>
+                        <input type="radio" name="rating" id="rating1" value="0.5" required /><label for="rating1" title="0.5" class="half"></label>
+                    </div>
+                </h3>
+                <br>
+                <h4 class="lowmargin center">Review Title</h4>
+                <h6 class="center">You can leave this input blank</h6>
+                <input type="text" class="form-ctrl" name="subject">
+                <br>
+                <h4 class="lowmargin center">Review</h4>
+                <h6 class="center">You can leave this input blank</h6>
+                <textarea class="form-area" name="review" rows="4"></textarea>
+                <br>
+                <input type="submit" value="Submit Review" class="btn btn-primary">
+                <br>
+            </div>
+                <h3 class="sidegap">Guest Reviews ({{ object.countreview }})</h3>
+                {% for review in object.listreviews %}
+                    <div class="property-review">
+                        <h4>{% if review.user.profile.photo.url %}
+                                <img src="{{ review.user.profile.photo.url }}">
+                            {% else %}
+                                <img src="{% static 'lookingtostay/img/blank.jpg' %}">
+                            {% endif %}
+                            <div class="user">{{ review.user }}</div>
+                            <span class="float-right created-date">{{ review.created_at}}</span></h4>
+                        <p class="subject">{{ review.subject }}</p>
+                        <p class="reviewsum">{{ review.review }}</p>
+                    </div>
+                {% endfor %}
+    </form>
 </div>
 
 {% endblock content%}

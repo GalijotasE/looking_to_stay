@@ -4,6 +4,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 import uuid
 from django.conf import settings
+from django.db.models import Avg, Count
 
 
 class Country(models.Model):
@@ -136,11 +137,30 @@ class Hotel(models.Model):
         verbose_name='amenities'
     )
 
+    def averagereview(self):
+        review = ReviewRating.objects.filter(single_property=self).aggregate(average=Avg('rating'))
+        avg=0
+        if review['average'] is not None:
+            avg = float(review['average'])
+        return avg
+
+    def countreview(self):
+        reviews = ReviewRating.objects.filter(single_property=self).aggregate(count=Count('id'))
+        cnt = 0
+        if reviews['count'] is not None:
+            cnt = int(reviews['count'])
+        return cnt
+
+    def listreviews(self):
+        reviews = ReviewRating.objects.all()
+        return reviews
+
     def __str__(self) -> str:
         return self.hotel_name
 
     class Meta:
         ordering = ['hotel_name',]
+
 
 class Reservation(models.Model):
     user = models.ForeignKey(
@@ -188,6 +208,23 @@ class Reservation(models.Model):
         ordering = ['user', ]
 
 
-# class Reviews(models.Model):
-#     pass
+class ReviewRating(models.Model):
+    single_property = models.ForeignKey(
+        Hotel, on_delete=models.SET_NULL,
+        null=True, blank=True,
+    )
+    user = models.ForeignKey(
+        get_user_model(),
+        verbose_name='user',
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+    )
+    subject = models.CharField(max_length=100, blank=True)
+    review = models.TextField(max_length=500, blank=True)
+    rating = models.FloatField()
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.subject

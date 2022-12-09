@@ -25,6 +25,15 @@
                 <p><b>{{ hotel.hotel_name}}</b></p>
                     </a>
                     <p>&#128204; {{ hotel.city }}</p>
+                    <div class="rating-star center">
+                        <h4>
+                            <i class="fa fa-star{% if hotel.averagereview < 0.5 %}-o{% elif hotel.averagereview >= 0.5 and hotel.averagereview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if hotel.averagereview < 1.5 %}-o{% elif hotel.averagereview >= 1.5 and hotel.averagereview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if hotel.averagereview < 2.5 %}-o{% elif hotel.averagereview >= 2.5 and hotel.averagereview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if hotel.averagereview < 3.5 %}-o{% elif hotel.averagereview >= 3.5 and hotel.averagereview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if hotel.averagereview < 4.5 %}-o{% elif hotel.averagereview >= 4.5 and hotel.averagereview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                        </h4>
+                    </div>
                     <h5><i>From </i><br>{{ hotel.price_from }} {{ hotel.type_currency }}<br><i> per night </i></h5>
                 </div>
         </li>

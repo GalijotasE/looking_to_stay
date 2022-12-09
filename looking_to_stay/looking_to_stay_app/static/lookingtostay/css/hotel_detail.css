@@ -101,6 +101,8 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
 .rooms td, .rooms th {
@@ -144,4 +146,138 @@
 
 .rooms button.roombtn:hover {
   background-color: rgba(203, 161, 89, 0.5);
+}
+
+div.reviews {
+  background-color: rgba(251, 231, 202, 0.815);
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+/* Hiding radio buttons */
+.rate > input{
+  display: none
+}
+
+.rate{
+  display: inline-block;
+  border: 0;
+}
+
+.rate > label{
+  float: right;
+}
+
+/* Showing review stars */
+.rate > label:before{
+  display: inline-block;
+  font-size: 1.1rem;
+  font-family: FontAwesome;
+  content: "\f005";
+  margin: 0;
+  padding: 0.3rem .2rem;
+  cursor: pointer
+}
+
+/* Half star */
+.rate .half:before{
+  content: "\f089";
+  position: absolute;
+  padding-right: 0;
+}
+
+/* Click and hover */
+input:checked ~ label, label:hover ~ label{
+  color: #ffb503;
+}
+
+.rating-star i{
+  color: #ffb503 !important;
+}
+
+/* reviews list */
+.float-right {
+  float: right;
+}
+
+.property-review {
+  background-color: rgba(251, 231, 202, 0.815);
+  border-radius: 10px;
+  margin: 0.5rem 2rem;
+  border: 2px solid rgb(250, 194, 81);
+}
+
+.property-review h4 {
+  display: block;
+  width: 98%;
+  padding: 0.5rem 1rem;
+  margin-left: 0px;
+}
+
+.property-review h4 img {
+  max-height: 5rem;
+  min-height: 5rem;
+  float: left;
+  margin-right: 0.5rem;
+  border-radius: 3rem;
+  border: 2px solid black;
+}
+
+.property-review p {
+  margin-left: 7rem;
+}
+
+.review-window {
+  /* background-color: white; */
+  margin: 2rem;
+}
+
+.size {
+  margin: -1rem 0;
+}
+
+.form-ctrl {
+  margin: 0 40%;
+  width: 20%;
+  border-radius: 10px;
+  border: none;
+}
+
+h6 {
+  margin: 0;
+  color: rgb(170, 114, 53);
+}
+
+.form-area {
+  margin: 0 35%;
+  width: 30%;
+  border-radius: 10px;
+  border: none;
+}
+
+.label-title {
+  margin: 1rem
+}
+
+h4.lowmargin {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: rgb(70, 39, 0);
+}
+
+.btn-primary {
+  width: 20%;
+  height: 3rem;
+  margin: 1rem 40%;
+  border-radius: 10px;
+  border: 2px solid rgb(250, 194, 81);
+  background-color: rgb(251, 231, 202);
+  color: rgb(70, 39, 0);
+  font-weight: 900;
+}
+
+.btn-primary:hover{
+  background-color: rgba(203, 161, 89, 0.5);
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django import forms
-from . models import Reservation
+from . models import Reservation, ReviewRating
 from django.utils.timezone import datetime, timedelta
 
 
@@ -19,3 +19,8 @@ class ReservationForm(forms.ModelForm):
             'check_in': DateInput(),
             'check_out': DateInput(),
             }
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = ReviewRating
+        fields = ('subject', 'review', 'rating')
