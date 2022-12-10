@@ -2,19 +2,20 @@
 {% load static %}
 {% block title %} Profile - {{ block.super }}{% endblock title %}
 {% block content%}
-<div class="profile">
-    <h1>{{ user.profile }}</h1>
+<h1 class="center">{{ user.profile }}</h1>
+<div class="profile center">
     {% if user.profile and user.profile.photo %}
-    <img src="{{ user.profile.photo.url }}" class="user-profile-photo">
+    <div class="user-profile-photo-wrap"><img src="{{ user.profile.photo.url }}" class="user-profile-photo"></div>
+    {% else %}
+    <div class="user-profile-photo-wrap"><img src="{% static 'lookingtostay/img/blank.jpg' %}" class="user-profile-photo"></div>
     {% endif %}
     <div class="profilewin">
     {% if user.first_name or user.last_name %}
-        <p class="text">Name: {{ user.first_name }} {{ user.last_name }}</p>    {% endif %}
-        <p class="text">E-mail: {{ user.email }}</p>
-        <p class="text">Country: {{ user.country }}</p>
-        <p class="text">Account type: {% if user.is_user == True %} User {% else %} Company {% endif %}</p>
-        <p><a class="button" href="{% url 'update_profile' %}">Update Info</a></p>
-        <p><a class="button" href="{% url 'user_reservations' %}">My Reservations</a></p>
+        <p class="names">{{ user.first_name }} {{ user.last_name }}</p>    {% endif %}
+        <p class="countries">{{ user.country }}</p>
+        <p class="text acc-type">Account type: {% if user.is_user == True %} User {% else %} Company {% endif %}</p>
+        <p><a class="button updatebtn" href="{% url 'update_profile' %}">Update Info</a>
+        <a class="button updatebtn" href="{% url 'user_reservations' %}">My Reservations</a></p>
     </div>
 </div>
 {% endblock content %}
