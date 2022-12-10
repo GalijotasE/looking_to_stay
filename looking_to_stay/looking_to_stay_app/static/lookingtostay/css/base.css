@@ -200,12 +200,19 @@ ul.cat li a:hover {
     background-color:rgb(203, 161, 89);
 }
 
+/* User Profile photo */
 .user-profile-photo {
     min-width: 250px;
     max-width: 250px;
     border-radius: 100%;
-    
 }
+
+/* .user-profile-photo-wrap {
+    min-width: 260px;
+    max-width: 260px;
+    background: linear-gradient(to right, rgb(255, 98, 0), rgb(249, 223, 23));
+    border-radius: 100%;
+} */
 
 h1.reservations {
     margin-top: 7rem;
@@ -301,7 +308,7 @@ h1.reservations {
     padding: 12px 16px;
     background-color: rgba(251, 231, 202, 0.815);
     border: 2px solid rgba(255,255,255,0.1);
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 20px rgba(8,7,16,0.6);
     color: rgb(70, 39, 0);
     position: absolute;
@@ -313,6 +320,80 @@ h1.reservations {
 .table-grid button {
     padding: 12px 16px;
     
+}
+
+/* Profile bg window */
+.profile {
+    background-color: rgba(251, 231, 202, 0.815);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 80px;
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+    margin: 0 30%;
+    padding: 2rem 0;
+}
+
+/* profile user first_name last_name p */
+p.names {
+    font-size: 30px;
+    font-weight: 800;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+/* profile user country p */
+p.countries {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+/* profile account type p */
+p.acc-type {
+    margin-bottom: 2rem;
+}
+
+/* Update info and my reservations buttons */
+a.updatebtn {
+    text-decoration: none;
+    margin: 0 2rem;
+    padding: 1rem;
+    background-color: rgba(251, 231, 202);
+    border: 1px solid black;
+    color:rgb(70, 39, 0);
+    border-radius: 10px;
+}
+
+a.updatebtn:hover {
+    background-color:rgba(252, 214, 160, 0.815);;
+    cursor: pointer;
+}
+
+/* Update profile labels */
+.elbl {
+    font-size: 22px;
+    color:rgb(70, 39, 0);
+}
+
+/* Update profile entry fields */
+.flbl {
+    background-color: white;
+}
+
+/* Update profile photo field */
+.phlbl {
+    background-color: wheat;
+}
+/* Update profile submit button */
+.btn-sbmt {
+    background-color: rgba(251, 231, 202);
+    border: 1px solid rgb(250, 194, 81);
+    border-radius: 10px;
+    width: 20%;
+}
+
+.btn-sbmt:hover {
+    background-color: rgba(203, 161, 89, 0.8);
+    cursor: pointer;
 }
 
 .myreservations {
@@ -449,4 +530,37 @@ p.rd {
     padding: 2rem;
     font-size: 20px;
     font-weight: 600;
+}
+
+.bg-form {
+    background-color: w;
+}
+
+.contact {
+    margin: 0;
+}
+
+.uni {
+    font-size: 40px;
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+
+.window {
+    background-color: rgba(251, 231, 202, 0.815);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0 20%;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+}
+
+.contact-window {
+    background-color: rgba(251, 231, 202, 0.815);
+    border-radius: 10px;
+    margin: 0 35%;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
 }

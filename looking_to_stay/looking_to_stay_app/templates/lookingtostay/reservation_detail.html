@@ -28,8 +28,8 @@
     <h2 class="rd center">Selected room type:<br>{{ object.roomtype.name }}</h2>
     <h2 class="rd center">Special requests:<br><i>{{ object.special_requests }}</i></h2>
     <h2 class="rd center">Nightly Room rate:<br>{{ object.roomtype.price }} {{ object.roomtype.currency_type }}</h3>
-    <h2 class="rd center">Length of stay:<br> ...nights</h2>
-    <h2 class="rd center">Total:<br>123</h2>
+    <h2 class="rd center">Length of stay:<br> {{ object.check_in|timesince:object.check_out }}</h2>
+    {% comment %} <h2 class="rd center">Total:<br>123</h2> {% endcomment %}
     <h3 class="rd center">Payment is made upon arrival at the property</h3>
     <p class="rd center"><a class="rd" href="{% url 'index' %}">Click here to make changes to this reservation</a></p>
 

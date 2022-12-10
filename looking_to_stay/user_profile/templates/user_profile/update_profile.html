@@ -7,17 +7,17 @@
     {{ user_form.errors }}
     {{ profile_form.errors }}
     <div class="table-grid form-grid center">
-        <div>{{ user_form.first_name.label }}</div>
-        <div>{{ user_form.first_name }}</div>
-        <div>{{ user_form.last_name.label }}</div>
-        <div>{{ user_form.last_name }}</div>
-        <div>{{ user_form.email.label }}</div>
-        <div>{{ user_form.email }}</div>
-        <div>{{ user_form.country.label }}</div>
-        <div>{{ user_form.country }}</div>
-        <div>{{ profile_form.photo.label }}</div>
-        <div>{{ profile_form.photo }}</div>
-        <p><button type="submit">Update</button></p>
+        <div class="elbl">{{ user_form.first_name.label }}</div>
+        <div class="flbl">{{ user_form.first_name }}</div>
+        <div class="elbl">{{ user_form.last_name.label }}</div>
+        <div class="flbl">{{ user_form.last_name }}</div>
+        <div class="elbl">{{ user_form.email.label }}</div>
+        <div class="flbl">{{ user_form.email }}</div>
+        <div class="elbl">{{ user_form.country.label }}</div>
+        <div class="flbl">{{ user_form.country }}</div>
+        <div class="elbl">{{ profile_form.photo.label }}</div>
+        <div class="phlbl">{{ profile_form.photo }}</div>
+        <p><button class="btn-sbmt" type="submit">Update</button></p>
     </div>
 </form>
 {% endblock content %}
