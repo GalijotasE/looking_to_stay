@@ -1,7 +1,7 @@
 {% extends 'lookingtostay/base.html' %}
 {% load static %}
 {% block title %}{{ object }} - {{ block.super }}{% endblock title %}
-{% block content%}
+{% block content %}
     <h1 class="rd center">Reservation receipt</h1>
     <h2 class="rd center">Property: {{ object.property }}<br>Property type: {{ object.property.category }}</h2>
     <h2 class="rd center">Dates:<br> {{ object.check_in }} - {{ object.check_out }}</h3>
@@ -31,7 +31,8 @@
     <h2 class="rd center">Length of stay:<br> {{ object.check_in|timesince:object.check_out }}</h2>
     {% comment %} <h2 class="rd center">Total:<br>123</h2> {% endcomment %}
     <h3 class="rd center">Payment is made upon arrival at the property</h3>
-    <p class="rd center"><a class="rd" href="{% url 'index' %}">Click here to make changes to this reservation</a></p>
+    <p class="rd center"><a class="rd" href="{% url 'reservation_edit' reservation.pk %}">Make Changes To this Reservation</a></p>
+    <p class="rdl center"><a class="rd" href="{% url 'reservation_delete' reservation.pk %}">Cancel Reservation</a></p>
 
 
 {% endblock content %}

@@ -1,7 +1,7 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from .models import Hotel, Country, Category, Reservation, ReviewRating
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect, render, get_object_or_404
 from django.db.models import Q
 from django.urls import reverse_lazy
@@ -97,6 +97,43 @@ class UserReservationDetailView(LoginRequiredMixin, DetailView):
         return render(request, 'lookingtostay/reservation_detail.html', {'reservation': single_reservation})
 
 
+class UserReservationUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = 'lookingtostay/reservation.html'
+    success_url = reverse_lazy('user_reservations')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.status = 'r'
+        return super().form_valid(form)
+
+    def test_func(self):
+        reservation = self.get_object()
+        return self.request.user == reservation.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reservation'] = self.get_object()
+        if context['reservation'].status == 'r':
+            context['action'] = 'Edit Reservation'
+        return context
+
+
+class UserReservationDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Reservation
+    template_name = 'lookingtostay/reservation_delete.html'
+    success_url = reverse_lazy('user_reservations')
+
+    def test_func(self):
+        reservation = self.get_object()
+        return self.request.user == reservation.user
+
+    def form_valid(self, form):
+        reservation = self.get_object()
+        if reservation.status == 'r':
+            pass
+        return super().form_valid(form)
 
 def submit_review(request, property_id):
     url = request.META.get('HTTP_REFERER')

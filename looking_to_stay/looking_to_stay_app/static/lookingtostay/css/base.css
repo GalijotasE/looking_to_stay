@@ -205,14 +205,17 @@ ul.cat li a:hover {
     min-width: 250px;
     max-width: 250px;
     border-radius: 100%;
+    margin: auto;
 }
 
-/* .user-profile-photo-wrap {
-    min-width: 260px;
-    max-width: 260px;
-    background: linear-gradient(to right, rgb(255, 98, 0), rgb(249, 223, 23));
-    border-radius: 100%;
-} */
+.user-profile-photo-wrap {
+    max-height: 250px;
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    max-width: 250px;
+    border-radius: 50%;
+    padding: 5px;
+    margin: auto;
+}
 
 h1.reservations {
     margin-top: 7rem;
@@ -312,9 +315,9 @@ h1.reservations {
     box-shadow: 0 0 20px rgba(8,7,16,0.6);
     color: rgb(70, 39, 0);
     position: absolute;
-    right: 25%;
-    width: 50%;
-    height: 50%;
+    right: 33%;
+    width: 33%;
+    height: 55%;
 }
 
 .table-grid button {
@@ -375,14 +378,39 @@ a.updatebtn:hover {
 }
 
 /* Update profile entry fields */
-.flbl {
-    background-color: white;
+input#id_first_name {
+    height: 2rem;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 10px;
 }
 
-/* Update profile photo field */
-.phlbl {
-    background-color: wheat;
+input#id_last_name {
+    height: 2rem;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 10px;
 }
+
+input#id_email {
+    height: 2rem;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 10px;
+}
+
+input#id_country {
+    height: 2rem;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 10px;
+}
+
+/* Update profile photo url */
+.phlbl a {
+    font-size: 0;
+}
+
 /* Update profile submit button */
 .btn-sbmt {
     background-color: rgba(251, 231, 202);
@@ -523,11 +551,16 @@ a.rd {
 }
 
 a.rd:hover {
-    background-color: rgba(252, 214, 160, 0.815);;
+    background-color: rgba(252, 214, 160, 0.815);
 }
 
 p.rd {
-    padding: 2rem;
+    padding-top: 1rem;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+p.rdl {
     font-size: 20px;
     font-weight: 600;
 }
@@ -563,4 +596,48 @@ p.rd {
     padding-bottom: 2rem;
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 20px rgba(8,7,16,0.6);
+}
+
+.cancel-form {
+    padding: 2rem;
+    background-color: rgba(251, 231, 202, 0.815);
+    margin: 0 30%;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+}
+
+/* Cancel reservation yes button */
+.cancel-form button {
+    background-color: rgb(252, 214, 160);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 11px 30px;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgb(70, 39, 0);
+}
+
+.cancel-form button:hover {
+    cursor: pointer;
+    background-color: rgba(203, 161, 89, 0.8);
+}
+
+/* Cancel reservation no button */
+.cancel-form a.button {
+    background-color: rgb(252, 214, 160);
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgb(70, 39, 0);
+
+}
+
+.cancel-form a.button:hover {
+    background-color: rgba(203, 161, 89, 0.8);
 }

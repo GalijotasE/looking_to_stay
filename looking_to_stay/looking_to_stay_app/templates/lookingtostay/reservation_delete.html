@@ -1,0 +1,15 @@
+{% extends 'lookingtostay/base.html' %}
+{% load static %}
+{% block title %} Cancelling reservation - {{ block.super }}{% endblock title %}
+{% block content %}
+<h1 class="rd center">Cancelling {{ object }} Reservation</h1>
+<div class="cancel-form center">
+    <form method="post" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to cancel this booking?<p>
+            <button type="submit" class="button">Yes</button>
+            <a href="{% url 'user_reservations' %}" class="button">No</a>
+        </p>
+    </form>
+</div>
+{% endblock content %}
