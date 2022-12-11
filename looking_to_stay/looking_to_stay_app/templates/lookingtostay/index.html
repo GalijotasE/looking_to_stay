@@ -9,41 +9,16 @@
     from over {{ num_countries }} countries!<br>
     Make your reservation now! 
     </p>
-    <form class="reservationfield center">
+    <form class="reservationfield center" method="get" action="{% url 'search_results' %}">
+        {% csrf_token %}
         {% comment %} DESTINATION {% endcomment %}
         <div>
-            <span class="form-group">
-                <label class="form-label">Location</label>
-                <input class="form-control" type="text" placeholder="Enter Address, City, Country">
-            </span>
-            {% comment %} GUESTS {% endcomment %}
-            <span class="form-group">
-                <label class="form-label">Guests</label>
-                <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
-            </span>
+            <div class="center">
+                <div class="search-label"><label>Search</label></div>
+                <div class="search-input" ><input name="q" type="text" placeholder="Enter City, Address, Property Name"></div>
+            </div>
+        <div class="form-btn center">
+            <button class="submit-btn" type="submit">See Results</button>
         </div>
-        <p></p>
-            {% comment %} CHECK IN {% endcomment %}
-        <div>
-            <span class="form-group">
-                <span class="form-label">Check In</span>
-                <input class="form-control" type="date" required>
-            </span>
-            {% comment %} CHECK OUT {% endcomment %}
-            <span class="form-group">
-                <span class="form-label">Check out</span>
-                <input class="form-control" type="date" required>
-            </span>
-        </div>
-        <p></p>
-        {% comment %} BUTTON {% endcomment %}
-        <span class="form-btn">
-            <button class="submit-btn">Check availability</button>
-        </span>
     </form>
 {% endblock content%}

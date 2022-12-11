@@ -109,19 +109,21 @@
                 <br>
             </div>
                 <h3 class="sidegap">Guest Reviews ({{ object.countreview }})</h3>
-                {% for review in object.listreviews %}
-                    <div class="property-review">
-                        <h4>{% if review.user.profile.photo.url %}
-                                <img src="{{ review.user.profile.photo.url }}">
-                            {% else %}
-                                <img src="{% static 'lookingtostay/img/blank.jpg' %}">
-                            {% endif %}
-                            <div class="user">{{ review.user }}</div>
-                            <span class="float-right created-date">{{ review.created_at}}</span></h4>
-                        <p class="subject">{{ review.subject }}</p>
-                        <p class="reviewsum">{{ review.review }}</p>
-                    </div>
-                {% endfor %}
+                {% if object %}
+                    {% for review in object.single_property_reviews %}
+                        <div class="property-review">
+                            <h4>{% if review.user.profile.photo.url %}
+                                    <img src="{{ review.user.profile.photo.url }}">
+                                {% else %}
+                                    <img src="{% static 'lookingtostay/img/blank.jpg' %}">
+                                {% endif %}
+                                <div class="user">{{ review.user }}</div>
+                                <span class="float-right created-date">{{ review.created_at}}</span></h4>
+                            <p class="subject">{{ review.subject }}</p>
+                            <p class="reviewsum">{{ review.review }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
     </form>
 </div>
 

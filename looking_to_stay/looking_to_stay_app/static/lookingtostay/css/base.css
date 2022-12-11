@@ -4,11 +4,10 @@ body {
     background-attachment: fixed;
     font-family: 'Verdana';
     margin: 0;
-    /* display: flex; */
     flex-direction: column;
     justify-content: flex-start;
     min-height: 100vh;
-    /* width: 100vw; */
+    overflow-y: scroll;
 }
 
 /* atstumas nuo kaires */
@@ -176,6 +175,24 @@ ul.cat li a:hover {
     padding-top: 1rem;
 }
 
+/* search label index psl */
+.search-label label {
+    color: rgb(70, 39, 0);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+/* search input index psl */
+
+.search-input input {
+    margin: 2rem 0%;
+    height: 60px;
+    /* width: 450px; */
+    font-size: 25px;
+    border-radius: 10px;
+}
+
 /* property pavadinimas */
 .center.lower p {
     font-size: 13px;
@@ -204,6 +221,8 @@ ul.cat li a:hover {
 .user-profile-photo {
     min-width: 250px;
     max-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
     border-radius: 100%;
     margin: auto;
 }
@@ -222,10 +241,11 @@ h1.reservations {
 }
 
 .reservationfield {
-    height: 220px;
-
+    height: 250px;
+    margin: 0 30%;
     background-color: rgba(251, 231, 202, 0.815);
     border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 60px 35px;
 }
@@ -317,7 +337,7 @@ h1.reservations {
     position: absolute;
     right: 33%;
     width: 33%;
-    height: 55%;
+    height: 60%;
 }
 
 .table-grid button {

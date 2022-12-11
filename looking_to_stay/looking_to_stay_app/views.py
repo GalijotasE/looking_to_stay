@@ -26,6 +26,18 @@ def about_us(request):
     return render(request, 'lookingtostay/about_us.html', )
 
 
+class SearchResultsView(ListView):
+    model = Hotel
+    template_name = 'lookingtostay/search_results.html'
+    
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        property_list = Hotel.objects.filter(
+            Q(city__city_name__icontains=query) | Q(hotel_name__icontains=query) | Q(address__icontains=query)
+        )
+        return property_list
+
+
 class HotelDetailView(DetailView):
     model = Hotel
     template_name = 'lookingtostay/hotel_detail.html'

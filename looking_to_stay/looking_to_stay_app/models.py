@@ -155,6 +155,10 @@ class Hotel(models.Model):
         reviews = ReviewRating.objects.all()
         return reviews
 
+    def single_property_reviews(self):
+        reviews = ReviewRating.objects.filter(single_property=self)
+        return reviews
+
     def __str__(self) -> str:
         return self.hotel_name
 
